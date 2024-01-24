@@ -12,14 +12,18 @@ using DesktopSecurityApp.Services;
 
 namespace DesktopSecurityApp
 {
-    public partial class App : Application 
+    public partial class App : Application //new
     {
+        private KeybindHandling keyHandler;
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
 
+            keyHandler = new KeybindHandling();
+
             // Call the method from the new class to register key bindings
             KeybindHandling.RegisterKeyBindings(MainWindow);
+            // Dodajte handler za događaj tastature za key-bind otvaranja overlay-a
         }
     }
 
