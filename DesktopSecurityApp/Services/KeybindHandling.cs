@@ -5,7 +5,7 @@ namespace DesktopSecurityApp.Services
 {
     internal class KeybindHandling
     {
-        private static OverlayWindow overlayWindow;
+        internal static OverlayWindow overlayWindow;
         public static void RegisterKeyBindings(Window window)
         {
             EventManager.RegisterClassHandler(typeof(Window), Window.KeyDownEvent,new KeyEventHandler(KeyBindHandler));
