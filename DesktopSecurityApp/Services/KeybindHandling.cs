@@ -3,41 +3,52 @@ using System.Windows.Input;
 
 namespace DesktopSecurityApp.Services
 {
-    internal class KeybindHandling
+    public class KeybindHandling
     {
-        internal static OverlayWindow overlayWindow;
+        public static OverlayWindow overlayWindow;
         public static void RegisterKeyBindings(Window window)
         {
             EventManager.RegisterClassHandler(typeof(Window), Window.KeyDownEvent,new KeyEventHandler(KeyBindHandler));
         }
         public static void KeyBindHandler(object sender, KeyEventArgs e)
         {
-            // Provera key-bind kombinacije (Ctrl + Alt + S)
-            if ( e.Key == Key.S)
+            if (e.Key == Key.S)
             {
-                // Ako je key-bind ispravan, izvršite željene akcije
-                MessageBox.Show("Key-bind uspešno pritisnut!");
-                // Dodajte ovde dodatni kôd ili pozovite funkciju koja će se izvršiti
+                HandleValidKeyBind();
             }
             else
             {
-                // Ako key-bind nije Ctrl + Alt + S, proverite otvaranje/zatvaranje overlay-a
-                HandleOverlay(e);
+                HandleFalseKeyBind();
             }
         }
-        private static void HandleOverlay(KeyEventArgs e)
+
+        public static void HandleValidKeyBind()
         {
-            // Ako je key-bind ispravan, otvorite/zatvorite overlay
             if (overlayWindow == null)
             {
-                overlayWindow = new OverlayWindow();
-                overlayWindow.Show();
+                OpenOverlayWindow();
             }
             else
             {
-                overlayWindow.Close();
-                overlayWindow = null;
+                CloseOverlayWindow();
             }
+        }
+
+        public static void HandleFalseKeyBind()
+        {
+            //Logika za kameru ...
+        }
+
+        public static void OpenOverlayWindow()
+        {
+            overlayWindow = new OverlayWindow();
+            overlayWindow.Show();
+        }
+
+        public static void CloseOverlayWindow()
+        {
+            overlayWindow.Close();
+            overlayWindow = null;
         }
     }
 }
