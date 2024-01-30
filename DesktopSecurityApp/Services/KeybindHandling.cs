@@ -1,5 +1,7 @@
-﻿using System.Windows;
+﻿using DesktopSecurityApp.Services;
+using System.Windows;
 using System.Windows.Input;
+using System.IO;
 
 namespace DesktopSecurityApp.Services
 {
@@ -37,6 +39,11 @@ namespace DesktopSecurityApp.Services
         public static void HandleFalseKeyBind()
         {
             //Logika za kameru ...
+
+            // Pozivamo metodu CaptureAndSave sa prosleđenom putanjom
+            CameraHandling cameraHandler = new CameraHandling();
+            cameraHandler.StartCamera();
+            //CameraHandling.StartCamera();
         }
 
         public static void OpenOverlayWindow()
