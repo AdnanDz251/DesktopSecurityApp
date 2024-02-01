@@ -53,6 +53,7 @@ namespace DesktopSecurityApp.Services
 
                 // Postavite prava na folder ako je uspješno kreiran
                 SetFolderSecurity(outputDirectory);
+
             }
 
             // Spremite sliku na disk
@@ -77,6 +78,7 @@ namespace DesktopSecurityApp.Services
 
             MessageBox.Show($"Security settings applied to {folderPath}");
         }
+
 
         private void SaveImageToDisk(BitmapSource bitmapSource, string outputPath)
         {
