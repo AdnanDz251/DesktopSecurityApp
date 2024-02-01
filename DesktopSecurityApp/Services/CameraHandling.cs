@@ -37,8 +37,19 @@ namespace DesktopSecurityApp.Services
             // Generirajte jedinstveno ime datoteke
             string fileName = $"capture_{DateTime.Now:yyyyMMdd_HHmmss}.png";
 
-            // Kreirajte punu putanju do Documents foldera ili drugog odabranog mjesta za pohranu
-            string outputPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), fileName);
+            // Kreirajte relativnu putanju do CameraPhotos foldera unutar Data foldera
+            string relativePath = Path.Combine(@"C:\Users\hamme\source\repos\AdnanDz251\DesktopSecurityApp\DesktopSecurityApp\Data\CameraPhotos", fileName);
+
+            // Dobijte apsolutnu putanju do trenutnog direktorija izvršavanja
+            string currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string outputPath = Path.Combine(currentDirectory, relativePath);
+
+            // Provjerite da li postoji direktorijum, i ako ne, kreirajte ga
+            string outputDirectory = Path.GetDirectoryName(outputPath);
+            if (!Directory.Exists(outputDirectory))
+            {
+                Directory.CreateDirectory(outputDirectory);
+            }
 
             // Spremite sliku na disk
             SaveImageToDisk(bitmapSource, outputPath);
@@ -47,6 +58,7 @@ namespace DesktopSecurityApp.Services
             videoSource.SignalToStop();
             videoSource.WaitForStop();
         }
+
         private void SaveImageToDisk(BitmapSource bitmapSource, string outputPath)
         {
             var encoder = new PngBitmapEncoder();
