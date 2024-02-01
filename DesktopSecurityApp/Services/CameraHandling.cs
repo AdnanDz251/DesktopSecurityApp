@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.IO;
+using System.Security.AccessControl;
 using System.Windows;
 using AForge.Video;
 using AForge.Video.DirectShow;
@@ -49,6 +50,10 @@ namespace DesktopSecurityApp.Services
             if (!Directory.Exists(outputDirectory))
             {
                 Directory.CreateDirectory(outputDirectory);
+
+                // Postavite prava na folder ako je uspješno kreiran
+                SetFolderSecurity(outputDirectory);
+
             }
 
             // Spremite sliku na disk
@@ -59,6 +64,22 @@ namespace DesktopSecurityApp.Services
             videoSource.WaitForStop();
         }
 
+        private void SetFolderSecurity(string folderPath)
+        {
+            DirectoryInfo dInfo = new DirectoryInfo(folderPath);
+
+            // Postavite osnovna prava na folder
+            DirectorySecurity dSecurity = dInfo.GetAccessControl();
+            dSecurity.AddAccessRule(new FileSystemAccessRule("Everyone", FileSystemRights.FullControl, InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit, PropagationFlags.None, AccessControlType.Allow));
+            dInfo.SetAccessControl(dSecurity);
+
+            // Zaključajte folder
+            dInfo.Attributes |= FileAttributes.Encrypted;
+
+            MessageBox.Show($"Security settings applied to {folderPath}");
+        }
+
+
         private void SaveImageToDisk(BitmapSource bitmapSource, string outputPath)
         {
             var encoder = new PngBitmapEncoder();
@@ -68,6 +89,9 @@ namespace DesktopSecurityApp.Services
             {
                 encoder.Save(stream);
             }
+
+            // Zaključajte datoteku
+            File.Encrypt(outputPath);
 
             MessageBox.Show($"Image saved to {outputPath}");
         }
