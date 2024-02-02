@@ -96,7 +96,7 @@ namespace DesktopSecurityApp.Services
             MessageBox.Show($"Image saved to {outputPath}");
         }
 
-        private BitmapSource ConvertBitmapToBitmapSource(Bitmap bitmap)
+        public BitmapSource ConvertBitmapToBitmapSource(Bitmap bitmap)
         {
             using (MemoryStream memoryStream = new MemoryStream())
             {
