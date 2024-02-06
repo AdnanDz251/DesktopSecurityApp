@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DesktopSecurityApp.Services"
         mc:Ignorable="d"
-        Title="OverlayWindow" Height="450" Width="800">
+        Title="OverlayWindow" Height="450" Width="800"
+        WindowStyle="None" AllowsTransparency="True" Background="Transparent">
     <Grid>
         <TextBlock Text="Overlay Content" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
     </Grid>

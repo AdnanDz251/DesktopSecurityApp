@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using DesktopSecurityApp.Services;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,6 +20,23 @@ namespace DesktopSecurityApp
         public MainWindow()
         {
             InitializeComponent();
+            WindowStyle = WindowStyle.None;
+            ResizeMode = ResizeMode.NoResize;
+
+            // Postavi trenutni key bind u TextBox
+            txtActivationKey.Text = KeybindHandling.GetActivationKey().ToString();  //new
+        }
+        private void txtActivationKey_TextChanged(object sender, RoutedEventArgs e)
+        {
+            if (Enum.TryParse<Key>(txtActivationKey.Text, out Key selectedKey))
+            {
+                KeybindHandling.SetActivationKey(selectedKey);
+                Key currentKey = KeybindHandling.GetActivationKey();
+            }
+            else
+            {
+                // Ako korisnik unese nešto što nije validan taster, možete prikazati poruku ili izvršiti odgovarajuće radnje.
+            }
         }
     }
 }
