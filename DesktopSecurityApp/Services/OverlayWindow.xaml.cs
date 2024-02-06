@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
+using System.Windows;                   // Moze samo ovaj da ostane
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -22,6 +22,9 @@ namespace DesktopSecurityApp.Services
         public OverlayWindow()
         {
             InitializeComponent();
+
+            // Postavi da bude fullscreen
+            WindowState = WindowState.Maximized;
         }
     }
 }
