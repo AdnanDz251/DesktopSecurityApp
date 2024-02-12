@@ -6,6 +6,7 @@ using System.Windows.Input;
 using DesktopSecurityApp.Services;
 using System.Windows.Media;
 using EmailSenderApp; // Dodavanje ovog using statement
+using DotNetEnv;
 
 //[assembly: ThemeInfo(
 //    ResourceDictionaryLocation.None,
@@ -19,15 +20,21 @@ namespace DesktopSecurityApp
         private KeybindHandling keyHandler;
         private Mailer mailer; // Dodana varijabla
 
+
+
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
 
+            // Dohvatanje korisničkog imena iz Environment varijable
+            DotNetEnv.Env.Load();
+            string userEmail = Environment.GetEnvironmentVariable("Email");
+
             // instanca Mailer-a sa odgovarajućim parametrima
-            mailer = new Mailer("sender@example.com", 587, true, "yourusername", "yourpassword");
+            mailer = new Mailer("smtp.gmail.com", 465, true, userEmail);  //Informacije maila NA KOJI SE ŠALJE MAIL
 
             // instanca KeybindHandling i prosljeđuje instancu Mailer-a u konstruktor
-            keyHandler = new KeybindHandling(mailer);
+            keyHandler = new KeybindHandling(mailer, "ajanovic.m97@gmail.com"); //STA TI JE BAA !?!?!?!
 
             // Pozovite metodu iz nove klase za registraciju key bindinga
             KeybindHandling.RegisterKeyBindings(MainWindow);

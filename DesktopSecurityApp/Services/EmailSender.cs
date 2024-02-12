@@ -1,6 +1,8 @@
 ﻿using MailKit.Net.Smtp;
+using MailKit.Security;
 using MimeKit;
 using System;
+using DotNetEnv;
 
 namespace EmailSenderApp
 {
@@ -12,23 +14,27 @@ namespace EmailSenderApp
         private readonly string _username;
         private readonly string _password;
 
-        public Mailer(string host, int port, bool useSsl, string username, string password)
+        public Mailer(string host, int port, bool useSsl, string username)
         {
             _host = host;
             _port = port;
             _useSsl = useSsl;
             _username = username;
-            _password = password;
         }
+
 
         public void SendEmail(string senderEmail, string recipientEmail, string subject, string body)
         {
+            DotNetEnv.Env.Load();
+            string DSA_username = Environment.GetEnvironmentVariable("DSA_username");   // koristimo u Autenticate !
+            string DSA_password = Environment.GetEnvironmentVariable("DSA_password");
+
             try
             {
                 // Create a new email message
                 var message = new MimeMessage();
-                message.From.Add(new MailboxAddress("Sender Name", senderEmail));
-                message.To.Add(new MailboxAddress("Recipient Name", recipientEmail));
+                message.From.Add(new MailboxAddress("Desktop Security App", senderEmail));
+                message.To.Add(new MailboxAddress(_username, recipientEmail));
                 message.Subject = subject;
                 message.Body = new TextPart("plain")
                 {
@@ -36,19 +42,18 @@ namespace EmailSenderApp
                 };
 
                 // Connect to the SMTP server and send the email
-                using (var client = new SmtpClient())
-                {
-                    client.Connect(_host, _port, _useSsl);
-                    client.Authenticate(_username, _password);
-                    client.Send(message);
-                    client.Disconnect(true);
-                }
+                using var client = new SmtpClient();
+                client.Connect("mail.skim.ba", 465, true);  // "mail.skim.ba umjesto dsa@skim.ba |  port koji je od maila | SecureSocketOptions.SslOnConnect komanda za koristenje sll umjsto TRUE         
+                client.Authenticate("dsa@skim.ba", "Stavistahoces123#");                // "dsa@skim.ba umjesto dsa
+                client.Send(message);
+                client.Disconnect(true);
 
                 Console.WriteLine("Email sent successfully!");
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error sending email: {ex.Message}");
+                throw;
             }
         }
     }

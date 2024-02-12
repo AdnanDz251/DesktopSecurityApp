@@ -3,16 +3,22 @@ using System.Windows;
 using System.Windows.Input;
 using System.IO;
 using EmailSenderApp;
+using MailKit.Net.Smtp;
+using MimeKit;
+using DotNetEnv;
 
 namespace DesktopSecurityApp.Services
 {
     public class KeybindHandling
     {
         private static Mailer _mailer; // Dodajte ovo kao privatno polje
+        private static string _adminEmail;
 
-        public KeybindHandling(Mailer mailer) // Dodajte konstruktor za postavljanje Mailer-a
+
+        public KeybindHandling(Mailer mailer, string adminEmail) // Dodajte konstruktor za postavljanje Mailer-a
         {
             _mailer = mailer;
+            _adminEmail = adminEmail;
         }
 
         public static OverlayWindow overlayWindow;
@@ -60,12 +66,15 @@ namespace DesktopSecurityApp.Services
 
         private static void HandleFalseKeyBind()
         {
+            DotNetEnv.Env.Load();
+            string DSA_username = Environment.GetEnvironmentVariable("DSA_username");
+
             // Pozivamo metodu CaptureAndSave sa prosljeđenom putanjom (LOGIKA ZA KAMERU)
             CameraHandling cameraHandler = new CameraHandling();
-            cameraHandler.StartCamera();
+                cameraHandler.StartCamera();
 
-            // Slanje emaila
-            _mailer.SendEmail("sender@example.com", "recipient@example.com", "Subject", "Body");
+                // Slanje emaila na adminovu email adresu
+                _mailer.SendEmail("dsa@skim.ba", _adminEmail, "Pogrešan unos Key-bind-a", "Detektiran je pogrešan unos Key-bind-a.");
         }
 
         private static void OpenOverlayWindow()
