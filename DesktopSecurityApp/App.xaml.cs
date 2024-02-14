@@ -4,6 +4,7 @@ using System;
 using System.Windows;
 using System.Windows.Input;
 using DesktopSecurityApp.Services;
+using System.Windows.Media;
 
 //[assembly: ThemeInfo(
 //    ResourceDictionaryLocation.None,
