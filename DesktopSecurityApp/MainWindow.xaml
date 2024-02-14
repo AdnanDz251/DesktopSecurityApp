@@ -5,8 +5,72 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DesktopSecurityApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Height="600" Width="920"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="Transparent"
+        AllowsTransparency="True">
+    
+    <Border Background="#272537"
+            CornerRadius="20">
+        
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
 
-    </Grid>
+            <Image Source="C:\Users\adnan\source\repos\DesktopSecurityApp\DesktopSecurityApp\Assets\Images\Logo.png"
+                   HorizontalAlignment="Left"/>
+
+            <TextBlock Text="PrivacyPulse"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Right"
+                       Foreground="White"
+                       FontSize="22"
+                       Margin="10"/>
+
+            <StackPanel Grid.Row="1">
+                
+                <RadioButton Content="Dashboard"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}"/>
+                
+                <RadioButton Content="Gallery"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}"/>
+
+                <RadioButton Content="Update"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}"/>
+            </StackPanel>
+
+            <RadioButton Grid.Row="1"
+                         Content="Log Out"
+                         VerticalAlignment="Bottom"
+                         Height="50"
+                         Foreground="White"
+                         FontSize="14"
+                         Style="{StaticResource MenuButtonTheme}"/>
+
+            <ContentControl Grid.Row="1"
+                            Grid.Column="1"
+                            Margin="10"/>
+
+        </Grid>
+
+        
+    </Border>
+    
 </Window>
