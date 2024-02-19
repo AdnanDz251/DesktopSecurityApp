@@ -24,7 +24,7 @@ namespace DesktopSecurityApp
             ResizeMode = ResizeMode.NoResize;
 
             // Postavi trenutni key bind u TextBox
-            txtActivationKey.Text = KeybindHandling.GetActivationKey().ToString();  //new
+            txtActivationKey.Text = KeybindHandling.GetActivationKey().ToString();
         }
         private void txtActivationKey_TextChanged(object sender, RoutedEventArgs e)
         {

@@ -53,7 +53,6 @@ namespace DesktopSecurityApp.Services
 
                 // Postavite prava na folder ako je uspješno kreiran
                 SetFolderSecurity(outputDirectory);
-
             }
 
             // Spremite sliku na disk
