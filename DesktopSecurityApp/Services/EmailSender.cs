@@ -3,6 +3,7 @@ using MailKit.Security;
 using MimeKit;
 using System;
 using DotNetEnv;
+using DesktopSecurityApp.UserInterface.Theme;
 
 namespace EmailSenderApp
 {
@@ -23,7 +24,7 @@ namespace EmailSenderApp
         }
 
 
-        public void SendEmail(string senderEmail, string recipientEmail, string subject, string body)
+        public void SendEmail(string senderEmail, string recipientEmail, string subject)
         {
             DotNetEnv.Env.Load();
             string DSA_username = Environment.GetEnvironmentVariable("DSA_username");   // koristimo u Autenticate !
@@ -36,9 +37,10 @@ namespace EmailSenderApp
                 message.From.Add(new MailboxAddress("Desktop Security App", senderEmail));
                 message.To.Add(new MailboxAddress(_username, recipientEmail));
                 message.Subject = subject;
-                message.Body = new TextPart("plain")
+                var emailTemplate = new EmailTemplate();
+                message.Body = new TextPart("html")
                 {
-                    Text = body
+                    Text = emailTemplate.GetEmailBody()
                 };
 
                 // Connect to the SMTP server and send the email
