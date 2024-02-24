@@ -74,7 +74,7 @@ namespace DesktopSecurityApp.Services
                 cameraHandler.StartCamera();
 
                 // Slanje emaila na adminovu email adresu
-                _mailer.SendEmail("dsa@skim.ba", _adminEmail, "Pogrešan unos Key-bind-a", "Detektiran je pogrešan unos Key-bind-a.");
+                _mailer.SendEmail("dsa@skim.ba", _adminEmail, "Wrong Key-Bind !");
         }
 
         private static void OpenOverlayWindow()
