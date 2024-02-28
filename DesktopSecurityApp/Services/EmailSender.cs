@@ -4,6 +4,9 @@ using MimeKit;
 using System;
 using DotNetEnv;
 using DesktopSecurityApp.UserInterface.Theme;
+using Microsoft.Extensions.Configuration;
+using Syncfusion.Windows.Shared;
+using System.Security.Cryptography;
 
 namespace EmailSenderApp
 {
@@ -13,7 +16,6 @@ namespace EmailSenderApp
         private readonly int _port;
         private readonly bool _useSsl;
         private readonly string _username;
-        private readonly string _password;
 
         public Mailer(string host, int port, bool useSsl, string username)
         {
@@ -24,17 +26,17 @@ namespace EmailSenderApp
         }
 
 
-        public void SendEmail(string senderEmail, string recipientEmail, string subject)
+        public void SendEmail( string recipientEmail, string subject)
         {
-            DotNetEnv.Env.Load();
-            string DSA_username = Environment.GetEnvironmentVariable("DSA_username");   // koristimo u Autenticate !
-            string DSA_password = Environment.GetEnvironmentVariable("DSA_password");
+            //DotNetEnv.Env.Load();
+            string DSA_username = "dsa@skim.ba";   // koristimo u Autenticate !
+            string DSA_password = "Stavistahoces123#";
 
             try
             {
                 // Create a new email message
                 var message = new MimeMessage();
-                message.From.Add(new MailboxAddress("Desktop Security App", senderEmail));
+                message.From.Add(new MailboxAddress("Desktop Security App", DSA_username));
                 message.To.Add(new MailboxAddress(_username, recipientEmail));
                 message.Subject = subject;
                 var emailTemplate = new EmailTemplate();

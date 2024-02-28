@@ -7,6 +7,7 @@ using AForge.Video;
 using AForge.Video.DirectShow;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Forms;
 
 namespace DesktopSecurityApp.Services
 {
@@ -18,12 +19,12 @@ namespace DesktopSecurityApp.Services
         {
             // Provjerite postoji li bar jedna kamera
             FilterInfoCollection videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+            
+
             if (videoDevices.Count == 0)
             {
-                MessageBox.Show("No video devices found.");
-                return;
+                    MessageBox.Show("No video devices found.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);              
             }
-
             // Koristite prvu pronađenu kameru
             videoSource = new VideoCaptureDevice(videoDevices[0].MonikerString);
             videoSource.NewFrame += VideoSource_NewFrame;
