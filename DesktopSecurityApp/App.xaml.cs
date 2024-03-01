@@ -31,7 +31,8 @@ namespace DesktopSecurityApp
 
             base.OnStartup(e);
 
-            
+            // Ovdje možete pozvati metodu za spremanje korisničkih informacija u JSON datoteku
+            UserInformationManagement.SaveUserInfoToJsonFile();
 
             // Konfiguracija koja uključuje environment varijable
             var config = new ConfigurationBuilder()
@@ -39,8 +40,7 @@ namespace DesktopSecurityApp
                 .Build();
 
             // Dohvatanje korisničkog imena iz Environment varijable
-            //DotNetEnv.Env.Load();
-            
+
             string dsaUsername = Environment.GetEnvironmentVariable("DSA_USERNAME");
             string dsaPassword = Environment.GetEnvironmentVariable("DSA_PASWORD");
 
