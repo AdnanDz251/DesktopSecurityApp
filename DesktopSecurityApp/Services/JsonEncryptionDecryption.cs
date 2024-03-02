@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
 using Newtonsoft.Json;
@@ -102,12 +103,11 @@ namespace DesktopSecurityApp.Services
             UserInfo userInfo = new UserInfo
             {
                 Username = "example_user",
-                Password = "example_password",
+                Key = "L",
                 Email = "example@example.com"
             };
 
-            // Putanja do direktorija "UserData"
-            string customFolderPath = Path.Combine("C:\\Users\\hamme\\source\\repos\\AdnanDz251\\DesktopSecurityApp\\DesktopSecurityApp", "UserData");
+            string customFolderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "UserData");
             Directory.CreateDirectory(customFolderPath);
 
             // Putanja do JSON datoteke "user_data.json" unutar direktorija "UserData"
