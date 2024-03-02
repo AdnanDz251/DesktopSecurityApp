@@ -17,6 +17,7 @@ namespace DesktopSecurityApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        public string txtActivationKey = "";
         public MainWindow()
         {
             InitializeComponent();
@@ -24,11 +25,12 @@ namespace DesktopSecurityApp
             ResizeMode = ResizeMode.NoResize;
 
             // Postavi trenutni key bind u TextBox
-            txtActivationKey.Text = KeybindHandling.GetActivationKey().ToString();
+            txtActivationKey = KeybindHandling.GetActivationKey().ToString();
+            
         }
         private void txtActivationKey_TextChanged(object sender, RoutedEventArgs e)
         {
-            if (Enum.TryParse<Key>(txtActivationKey.Text, out Key selectedKey))
+            if (Enum.TryParse<Key>(txtActivationKey, out Key selectedKey))
             {
                 KeybindHandling.SetActivationKey(selectedKey);
                 Key currentKey = KeybindHandling.GetActivationKey();
