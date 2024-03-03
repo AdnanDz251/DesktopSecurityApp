@@ -18,8 +18,7 @@ namespace DesktopSecurityApp.Services
         public void StartCamera()
         {
             // Provjerite postoji li bar jedna kamera
-            FilterInfoCollection videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
-            
+            FilterInfoCollection videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);            
 
             if (videoDevices.Count == 0)
             {
@@ -39,21 +38,25 @@ namespace DesktopSecurityApp.Services
             // Generirajte jedinstveno ime datoteke
             string fileName = $"capture_{DateTime.Now:yyyyMMdd_HHmmss}.png";
 
-            // Kreirajte relativnu putanju do CameraPhotos foldera unutar Data foldera
-            string relativePath = Path.Combine(@"C:\Users\hamme\source\repos\AdnanDz251\DesktopSecurityApp\DesktopSecurityApp\Data\CameraPhotos", fileName);
+            // Dobijte apsolutnu putanju do direktorija izvršne datoteke aplikacije
+            string executablePath = AppDomain.CurrentDomain.BaseDirectory;
 
-            // Dobijte apsolutnu putanju do trenutnog direktorija izvršavanja
-            string currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            string outputPath = Path.Combine(currentDirectory, relativePath);
+            // Kreirajte relativnu putanju do CameraPhotos foldera unutar Data foldera
+            string relativeFolderPath = Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetParent(executablePath).FullName).FullName).FullName).FullName, "Data", "CameraPhotos");
+
+            // Dobijte apsolutnu putanju do CameraPhotos foldera
+            string absoluteFolderPath = Path.Combine(executablePath, relativeFolderPath);
+
+            // Kreirajte putanju za izlazni fajl kombinovanjem apsolutne putanje CameraPhotos foldera sa imenom fajla
+            string outputPath = Path.Combine(absoluteFolderPath, fileName);
 
             // Provjerite da li postoji direktorijum, i ako ne, kreirajte ga
-            string outputDirectory = Path.GetDirectoryName(outputPath);
-            if (!Directory.Exists(outputDirectory))
+            if (!Directory.Exists(absoluteFolderPath))
             {
-                Directory.CreateDirectory(outputDirectory);
+                Directory.CreateDirectory(absoluteFolderPath);
 
                 // Postavite prava na folder ako je uspješno kreiran
-                SetFolderSecurity(outputDirectory);
+                SetFolderSecurity(absoluteFolderPath);
             }
 
             // Spremite sliku na disk

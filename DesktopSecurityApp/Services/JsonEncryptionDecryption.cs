@@ -60,7 +60,6 @@ namespace DesktopSecurityApp.Services
                             swEncrypt.Write(plainText);
                         }
                     }
-
                     return msEncrypt.ToArray();
                 }
             }
@@ -92,29 +91,6 @@ namespace DesktopSecurityApp.Services
                     }
                 }
             }
-        }
-    }
-
-    public static class UserInformationManagement
-    {
-        public static void SaveUserInfoToJsonFile()
-        {
-            // Instanciranje objekta UserInfo s korisničkim informacijama
-            UserInfo userInfo = new UserInfo
-            {
-                Username = "example_user",
-                Key = "L",
-                Email = "example@example.com"
-            };
-
-            string customFolderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "UserData");
-            Directory.CreateDirectory(customFolderPath);
-
-            // Putanja do JSON datoteke "user_data.json" unutar direktorija "UserData"
-            string jsonFilePath = Path.Combine(customFolderPath, "user_data.json");
-
-            // Spremanje korisničkih informacija u JSON datoteku
-            JsonEncryptionDecryption.EncryptToJsonFile(userInfo, jsonFilePath);
         }
     }
 }
