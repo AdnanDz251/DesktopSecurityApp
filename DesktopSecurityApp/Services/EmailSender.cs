@@ -24,8 +24,6 @@ namespace EmailSenderApp
             _useSsl = useSsl;
             _username = username;
         }
-
-
         public void SendEmail( string recipientEmail, string subject)
         {
             //DotNetEnv.Env.Load();
