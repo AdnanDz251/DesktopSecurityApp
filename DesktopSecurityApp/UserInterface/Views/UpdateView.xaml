@@ -8,6 +8,9 @@
              d:DesignHeight="450" d:DesignWidth="800"
              Background="#11c90e">
     <Grid>
-            
+        <StackPanel>
+            <TextBox x:Name="ActivationKeyTextBox" Text="{Binding ActivationKey}" Margin="10"/>
+            <Button Content="Save" Click="SaveButton_Click" Margin="10"/>
+        </StackPanel>
     </Grid>
 </UserControl>

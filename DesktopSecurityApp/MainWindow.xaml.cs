@@ -24,6 +24,8 @@ namespace DesktopSecurityApp
             WindowStyle = WindowStyle.None;
             ResizeMode = ResizeMode.NoResize;
 
+            //KeybindHandling.RegisterKeyBindings(this); // Dodajte ovu liniju za registraciju keybindovass
+
             // Postavi trenutni key bind u TextBox
             txtActivationKey = KeybindHandling.GetActivationKey().ToString();
             
