@@ -37,7 +37,7 @@ namespace DesktopSecurityApp.Services
             return JsonConvert.DeserializeObject<T>(decryptedJson);
         }
 
-        private static byte[] EncryptStringToBytes(string plainText, byte[] key)
+        public static byte[] EncryptStringToBytes(string plainText, byte[] key)
         {
             using (Aes aesAlg = Aes.Create())
             {
@@ -65,7 +65,7 @@ namespace DesktopSecurityApp.Services
             }
         }
 
-        private static string DecryptStringFromBytes(byte[] cipherText, byte[] key)
+        public static string DecryptStringFromBytes(byte[] cipherText, byte[] key)
         {
             using (Aes aesAlg = Aes.Create())
             {
