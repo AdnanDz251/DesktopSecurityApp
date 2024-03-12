@@ -18,11 +18,11 @@ namespace DesktopSecurityApp.Services
         public void StartCamera()
         {
             // Provjerite postoji li bar jedna kamera
-            FilterInfoCollection videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);            
+            FilterInfoCollection videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
 
             if (videoDevices.Count == 0)
             {
-                    MessageBox.Show("No video devices found.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);              
+                MessageBox.Show("No video devices found.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             // Koristite prvu pronađenu kameru
             videoSource = new VideoCaptureDevice(videoDevices[0].MonikerString);

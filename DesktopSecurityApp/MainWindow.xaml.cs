@@ -40,5 +40,9 @@ namespace DesktopSecurityApp
                 // Ako korisnik unese nešto što nije validan taster, možete prikazati poruku ili izvršiti odgovarajuće radnje.
             }
         }
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }
