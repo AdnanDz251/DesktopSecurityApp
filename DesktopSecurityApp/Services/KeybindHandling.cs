@@ -8,11 +8,21 @@ using MimeKit;
 using DotNetEnv;
 using static Org.BouncyCastle.Math.EC.ECCurve;
 using Microsoft.Extensions.Configuration;
+using System.Runtime.InteropServices;
 
 namespace DesktopSecurityApp.Services
 {
     public class KeybindHandling
     {
+        // Import Windows API functions
+        [DllImport("user32.dll")]
+        private static extern IntPtr GetShellWindow();
+
+        [DllImport("user32.dll")]
+        private static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);
+
+        private const int SW_MINIMIZE = 6;
+
         private static Mailer _mailer; // Dodajte ovo kao privatno polje
         private static string _userEmail;
 
@@ -31,7 +41,7 @@ namespace DesktopSecurityApp.Services
         }
         public static void SetActivationKey(Key key)
         {
-                activationKey = key;
+            activationKey = key;
         }
         public static Key GetActivationKey()
         {
@@ -48,17 +58,23 @@ namespace DesktopSecurityApp.Services
                 HandleFalseKeyBind();
             }
         }
+        private static void MinimizeAllWindows()
+        {
+            IntPtr shellWindowHandle = GetShellWindow();
+            ShowWindowAsync(shellWindowHandle, SW_MINIMIZE);
+        }
         private static void HandleValidKeyBind()
         {
             if (overlayWindow == null)
             {
+                MinimizeAllWindows(); // Minimize 
                 OpenOverlayWindow();
             }
             else
             {
                 CloseOverlayWindow();
-            }
-        }
+    }
+}
         private static void HandleFalseKeyBind()
         {
             //DotNetEnv.Env.Load();
@@ -66,16 +82,18 @@ namespace DesktopSecurityApp.Services
 
             // Pozivamo metodu CaptureAndSave sa prosljeđenom putanjom (LOGIKA ZA KAMERU)
             CameraHandling cameraHandler = new CameraHandling();
-                cameraHandler.StartCamera();
+            cameraHandler.StartCamera();
 
-                // Slanje emaila na adminovu email adresu
-                _mailer.SendEmail( _userEmail, "Wrong Key-Bind !");
+            // Slanje emaila na adminovu email adresu
+            _mailer.SendEmail(_userEmail, "Wrong Key-Bind !");
         }
+        
         private static void OpenOverlayWindow()
         {
             overlayWindow = new OverlayWindow();
             overlayWindow.Show();
         }
+
         private static void CloseOverlayWindow()
         {
             overlayWindow.Close();
@@ -83,4 +101,3 @@ namespace DesktopSecurityApp.Services
         }
     }
 }
-

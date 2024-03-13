@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using DesktopSecurityApp.Services;
+using DesktopSecurityApp.UserInterface.ViewModels;
 
 namespace DesktopSecurityApp.UserInterface.Views
 {
@@ -23,6 +13,16 @@ namespace DesktopSecurityApp.UserInterface.Views
         public UpdateView()
         {
             InitializeComponent();
+            DataContext = new UpdateViewModel(); // Dodajemo ViewModel kao DataContext
         }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is UpdateViewModel viewModel)
+            {
+                viewModel.SaveActivationKey(null);
+            }
+        }
+
     }
 }
