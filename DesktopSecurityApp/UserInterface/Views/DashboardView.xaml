@@ -10,18 +10,28 @@
 
   <StackPanel>
     <!-- First StackPanel for the header -->
-    <StackPanel Orientation="Horizontal"
-                Margin="0,0,0,0">
-      <!-- First Border for the left side -->
-      <Border Width="675" Height="200">
+    <StackPanel Orientation="Horizontal" Margin="0">
+      <Border Width="675" Height="75">
+        <TextBlock Text="HI, USERNAME"
+                   Foreground="White"
+                   FontSize="50"
+                   HorizontalAlignment="Center"
+                   FontFamily="Segoe UI"
+                   FontWeight="Bold" />
+      </Border>
+     
+    </StackPanel>
+    
+    <StackPanel Orientation="Horizontal" Margin="0">
+      <Border Width="675" Height="100">
         <TextBlock Text="WELCOME TO PRIVACY PULSE"
                    Foreground="White"
                    FontSize="36"
                    HorizontalAlignment="Center"
                    FontFamily="Segoe UI"
                    FontWeight="Bold" />
-
       </Border>
+
     </StackPanel>
 
     <!-- Second StackPanel for the instructions -->
@@ -35,8 +45,8 @@
       <!-- TextBlock for the title -->
       <TextBlock Text="Instructions:"
                  Foreground="White"
-                 FontSize="20"        
-                 FontWeight="Bold" 
+                 FontSize="20"
+                 FontWeight="Bold"
                  HorizontalAlignment="Left"
                  Margin="20,0,0,10"/>
 
@@ -48,25 +58,42 @@
                 Background="#844eff"
                 CornerRadius="20"
                 Margin="20,0,0,0">
+          <TextBlock Text="Placeholder Instruction 1"
+                     Foreground="White"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center"/>
         </Border>
 
         <Border Width="150"
                 Height="150"
                 Background="#4e99ff"
-                CornerRadius="20"/>
+                CornerRadius="20">
+          <TextBlock Text="Placeholder Instruction 2"
+                     Foreground="White"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center"/>
+        </Border>
 
         <Border Width="150"
                 Height="150"
                 Background="#4eff91"
-                CornerRadius="20"/>
+                CornerRadius="20">
+          <TextBlock Text="Placeholder Instruction 3"
+                     Foreground="White"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center"/>
+        </Border>
 
         <Border Width="150"
                 Height="150"
                 Background="#ecff4e"
-                CornerRadius="20"/>
+                CornerRadius="20">
+          <TextBlock Text="Placeholder Instruction 4"
+                     Foreground="Black"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center"/>
+        </Border>
       </StackPanel>
-
     </StackPanel>
-
   </StackPanel>
 </UserControl>
