@@ -3,8 +3,10 @@ using System;
 using System.IO;
 using System.Text;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Controls;
 using DesktopSecurityApp.Models;
+using DesktopSecurityApp.Services;
 
 namespace DesktopSecurityApp.UserInterface.Views
 {
@@ -17,7 +19,22 @@ namespace DesktopSecurityApp.UserInterface.Views
             InitializeComponent();
             Focusable = true;
             Focus();
+            currentKeybind.Content += UserInformationManagement.GetJSONFile().Key;
+
         }
+
+        private async Task ReloadUpdateViewAsync()
+        {
+            // Get the key asynchronously
+            string key = await Task.Run(() => UserInformationManagement.GetJSONFile().Key);
+
+            // Update the content
+            currentKeybind.Content = currentKeybind.Content.ToString().Substring(0, currentKeybind.Content.ToString().Length - 1) + key;
+
+            // Reinitialize the UpdateView
+            InitializeComponent();
+        }
+
 
         private void captureButton_Click(object sender, RoutedEventArgs e)
         {
@@ -63,13 +80,8 @@ namespace DesktopSecurityApp.UserInterface.Views
             // Create a new instance of UpdateUserInfo
             DesktopSecurityApp.Models.UpdateUserInfo updatedUserInfo = new DesktopSecurityApp.Models.UpdateUserInfo();
 
-
-
             // Populate the properties with the new information
             updatedUserInfo.NewKey = captureButton.Content.ToString(); // Replace "NewKeyHere" with the new key
-
-
-            MessageBox.Show($"{updatedUserInfo}");
 
             // Update user info in the JSON file
             try
@@ -81,13 +93,13 @@ namespace DesktopSecurityApp.UserInterface.Views
                 MessageBox.Show(ex.Message);
             }
 
-            // Display a message indicating that the key has been updated
-            MessageBox.Show($"New key saved successfully! {updatedUserInfo}");
+            // Display a message indicating that the key has been update
 
             // Reset the UI
             capturingKey = false;
             captureButton.Content = "Press a key";
             saveButton.Visibility = Visibility.Collapsed;
+            ReloadUpdateViewAsync();
         }
     }
 }
