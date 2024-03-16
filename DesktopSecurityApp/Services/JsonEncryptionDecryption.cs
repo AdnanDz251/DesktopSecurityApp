@@ -4,10 +4,13 @@ using System.IO;
 using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
+using System.Windows;
 using Newtonsoft.Json;
+using System.Text.Json;
 
-namespace DesktopSecurityApp.Services
-{
+
+namespace DesktopSecurityApp.Services 
+{ 
     public static class JsonEncryptionDecryption
     {
         // Ključ za enkripciju/dekripciju. Preporučuje se korištenje sigurnog i nasumičnog ključa.
@@ -31,10 +34,11 @@ namespace DesktopSecurityApp.Services
             byte[] encryptedData = File.ReadAllBytes(filePath);
 
             // Dekriptovanje podataka
-            string decryptedJson = DecryptStringFromBytes(encryptedData, Key);
+            string decryptedJson = DecryptStringFromBytes(encryptedData, Key).ToString();
+            string jsonAsString = JsonConvert.SerializeObject(decryptedJson);
 
             // Deserijalizacija JSON podataka u objekat
-            return JsonConvert.DeserializeObject<T>(decryptedJson);
+            return JsonConvert.DeserializeObject<T>(jsonAsString);
         }
 
         public static byte[] EncryptStringToBytes(string plainText, byte[] key)
