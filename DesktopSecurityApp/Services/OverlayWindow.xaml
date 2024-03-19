@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DesktopSecurityApp.Services"
         mc:Ignorable="d"
-        Title="OverlayWindow" Height="450" Width="800"
-        WindowStyle="None" AllowsTransparency="True" Background="Transparent">
-    <Grid>
-        <TextBlock Text="Overlay Content" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
-    </Grid>
+        Title="OverlayWindow" Height="1920" Width="1080"
+        WindowStyle="None" AllowsTransparency="True" Background="Black">
+  <Grid>
+    <TextBlock Text="Overlay Content" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+  </Grid>
 </Window>

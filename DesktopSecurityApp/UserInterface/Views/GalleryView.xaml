@@ -5,9 +5,55 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DesktopSecurityApp.UserInterface.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"
-             Background="Red">
-    <Grid>
-            
-    </Grid>
+             d:DesignHeight="600" d:DesignWidth="800"
+             >
+  <ScrollViewer VerticalScrollBarVisibility="Auto">
+    <Grid x:Name="ImgGrid" ClipToBounds="True">
+
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <!-- Auto height to fit content -->
+      <RowDefinition Height="*" />
+      <!-- Height to fill remaining space -->
+      <RowDefinition Height="*" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="*" />
+      <ColumnDefinition Width="*" />
+      <ColumnDefinition Width="*" />
+    </Grid.ColumnDefinitions>
+
+    <!-- Text in the first row, spanning all columns -->
+    <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
+               Text="These are all of your images."
+               Foreground="White"
+               FontFamily="Segoe UI"
+               FontWeight="Bold"
+               FontSize="40"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center" 
+               Margin="0,15,0,30"/>
+    
+
+    <!-- Rectangles in the remaining rows and columns -->
+    <!-- Second Row -->
+    <Rectangle Grid.Row="1" Grid.Column="0" Fill="Black" Margin="5"  />
+    <Rectangle Grid.Row="1" Grid.Column="1" Fill="Black" Margin="5" />
+    <Rectangle Grid.Row="1" Grid.Column="2" Fill="Black" Margin="5" />
+
+    <!-- Third Row -->                                
+    <Rectangle Grid.Row="2" Grid.Column="0" Fill="Black" Margin="5" />
+    <Rectangle Grid.Row="2" Grid.Column="1" Fill="Black" Margin="5" />
+    <Rectangle Grid.Row="2" Grid.Column="2" Fill="Black" Margin="5" />
+
+    <!-- Fourth Row -->
+    <Rectangle Grid.Row="3" Grid.Column="0" Fill="Black" Margin="5" />
+    <Rectangle Grid.Row="3" Grid.Column="1" Fill="Black" Margin="5" />
+    <Rectangle Grid.Row="3" Grid.Column="2" Fill="Black" Margin="5" />
+
+  </Grid>
+
+  </ScrollViewer>
 </UserControl>

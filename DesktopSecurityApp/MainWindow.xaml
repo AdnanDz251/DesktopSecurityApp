@@ -16,7 +16,7 @@
         <viewModel:MainViewModel/>
     </Window.DataContext>
     
-    <Border Background="#272537"
+    <Border  Background="#272537"
             CornerRadius="20">
         
         <Grid>
@@ -26,63 +26,66 @@
             </Grid.ColumnDefinitions>
             
             <Grid.RowDefinitions>
-                <RowDefinition Height="75"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
             <Image Source="C:\Users\adnan\source\repos\DesktopSecurityApp\DesktopSecurityApp\Assets\Images\Logo.png"
                    HorizontalAlignment="Left"/>
 
-            <TextBlock Text="PrivacyPulse"
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Right"
-                       Foreground="White"
-                       FontSize="22"
-                       Margin="10"/>
 
-            <StackPanel Grid.Row="1">
-                
+            <StackPanel Background="#1d1a36" Grid.Row="1">
+
+              <TextBlock Background="#1d1a36" Text="PrivacyPulse"
+                         VerticalAlignment="Center"
+                         HorizontalAlignment="Center"
+                         Foreground="White"
+                         FontSize="20"
+                         Margin="10" FontWeight="Black"/>
                 <RadioButton Content="Main"
                              Height="50"
                              Foreground="White"
-                             FontSize="14"
+                             FontSize="22"
+                       
                              Style="{StaticResource MenuButtonTheme}"
                              IsChecked="True"
-                             Command="{Binding DashboardViewCommand}"/>
+                             Command="{Binding DashboardViewCommand}"                              
+                             Cursor="Hand"/>
                 
                 <RadioButton Content="Gallery"
                              Height="50"
                              Foreground="White"
-                             FontSize="14"
+                             FontSize="22" 
+                       
                              Style="{StaticResource MenuButtonTheme}"
-                             Command="{Binding GalleryViewCommand}"/>
+                             Command="{Binding GalleryViewCommand}"                             
+                             Cursor="Hand"/>
 
                 <RadioButton Content="Update"
                              Height="50"
                              Foreground="White"
-                             FontSize="14"
+                             FontSize="22" 
                              Style="{StaticResource MenuButtonTheme}"
-                             Command="{Binding UpdateViewCommand}"/>
+                             Command="{Binding UpdateViewCommand}"
+                             Cursor="Hand"/>
             </StackPanel>
+          <RadioButton Grid.Row="1"
+                       Content="Exit"
+                       VerticalAlignment="Bottom"
+                       Height="50"
+                       Foreground="Red"
+                       FontWeight="Bold"
+                       FontSize="22"
+                       Style="{StaticResource MenuButtonTheme}"
+                       Click="ExitButton_Click"
+                       Cursor="Hand"/>
 
-            <RadioButton Grid.Row="1"
-                         Content="Exit"
-                         VerticalAlignment="Bottom"
-                         Height="50"
-                         Foreground="White"
-                         FontSize="14"
-                         Style="{StaticResource MenuButtonTheme}"/>
 
-            <ContentControl Grid.Row="1"
+          <ContentControl Grid.Row="1"
                             Grid.Column="1"
-                            Margin="10"
+                            Margin="10,75,0,0"
                             Content="{Binding CurrentView}"/>
 
-            
-
         </Grid>
-
-        
     </Border>
     
 </Window>

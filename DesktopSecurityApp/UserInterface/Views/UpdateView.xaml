@@ -1,16 +1,144 @@
 ﻿<UserControl x:Class="DesktopSecurityApp.UserInterface.Views.UpdateView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:DesktopSecurityApp.UserInterface.Views"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800"
-             Background="#11c90e">
-    <Grid>
-        <StackPanel>
-            <TextBox x:Name="ActivationKeyTextBox" Text="{Binding ActivationKey}" Margin="10"/>
-            <Button Content="Save" Click="SaveButton_Click" Margin="10"/>
-        </StackPanel>
+             PreviewKeyDown="UserControl_PreviewKeyDown">
+  <Grid VerticalAlignment="Top">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+
+    <!-- First row -->
+    <Grid Grid.Row="0">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto"/>
+        <ColumnDefinition Width="Auto"/>
+        <ColumnDefinition Width="Auto"/>
+      </Grid.ColumnDefinitions>
+
+      <Label x:Name="currentKeybind" Content="Your current keybind:  " HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" Margin="0,0,0,0" Grid.Column="0" Foreground="White"/>
     </Grid>
+
+    <!-- Second row -->
+    <Grid Grid.Row="1">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto"/>
+        <ColumnDefinition Width="Auto"/>
+        <ColumnDefinition Width="Auto"/>
+      </Grid.ColumnDefinitions>
+
+      <!-- Label -->
+      <Label Content="Change your keybind" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" Margin="0,0,0,0" Grid.Column="0" Foreground="White"/>
+
+      <!-- Button to capture key press -->
+      <Button x:Name="captureButton" Content="Click here to change the keybind" HorizontalAlignment="Center" VerticalAlignment="Center" Click="captureButton_Click" Grid.Column="1">
+        <Button.Style>
+          <Style TargetType="Button">
+            <Setter Property="Background" Value="#003beb"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+              <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                  <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="5" Padding="{TemplateBinding Padding}">
+                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                  </Border>
+                  <ControlTemplate.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                      <Setter TargetName="border" Property="Background" Value="#2659f2"/>
+                    </Trigger>
+                    <Trigger Property="IsPressed" Value="True">
+                      <Setter TargetName="border" Property="Background" Value="#2659f2"/>
+                    </Trigger>
+                  </ControlTemplate.Triggers>
+                </ControlTemplate>
+              </Setter.Value>
+            </Setter>
+          </Style>
+        </Button.Style>
+      </Button>
+
+      <!-- Save Button -->
+      <Button x:Name="saveButton" Content="Save Changes" HorizontalAlignment="Center" VerticalAlignment="Center" Click="saveButton_Click" Margin="20,0,0,0" Visibility="Collapsed" Grid.Column="2">
+        <Button.Style>
+          <Style TargetType="Button">
+            <Setter Property="Background" Value="#f0290f"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+              <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                  <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="5" Padding="{TemplateBinding Padding}">
+                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                  </Border>
+                  <ControlTemplate.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                      <Setter TargetName="border" Property="Background" Value="#e63f28"/>
+                    </Trigger>
+                    <Trigger Property="IsPressed" Value="True">
+                      <Setter TargetName="border" Property="Background" Value="#e63f28"/>
+                    </Trigger>
+                  </ControlTemplate.Triggers>
+                </ControlTemplate>
+              </Setter.Value>
+            </Setter>
+          </Style>
+        </Button.Style>
+      </Button>
+    </Grid>
+
+    <Grid Grid.Row="2">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto"/>
+      </Grid.ColumnDefinitions>
+
+
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+      </Grid.RowDefinitions>
+
+      <!-- Label -->
+      <Label Content="Change your Email:" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="18" Margin="0,0,0,0" Grid.Column="0" Foreground="White"/>
+
+      <!-- Button to capture key press -->
+      <TextBox Width="200" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" />
+    </Grid>
+
+    <Grid Grid.Row="3">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto"/>
+      </Grid.ColumnDefinitions>
+      
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+      </Grid.RowDefinitions>
+
+
+      <!-- Label -->
+      <Label Content="Change your username:" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="18" Margin="0,0,0,0" Grid.Column="0" Foreground="White"/>
+
+      <!-- Button to capture key press -->
+      <TextBox Width="200" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" />
+    </Grid>
+  </Grid>
+
+
 </UserControl>
