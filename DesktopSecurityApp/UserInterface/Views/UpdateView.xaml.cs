@@ -102,6 +102,7 @@ namespace DesktopSecurityApp.UserInterface.Views
             captureButton.Content = "Press a key";
             saveButton.Visibility = Visibility.Collapsed;
             ReloadUpdateViewAsync();
+            KeybindHandling.RefreshActivationKey();
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
