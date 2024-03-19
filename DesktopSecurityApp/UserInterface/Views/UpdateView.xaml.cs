@@ -1,3 +1,4 @@
+
 ﻿using DesktopSecurityApp.Services;
 using System;
 using System.IO;
@@ -13,6 +14,7 @@ namespace DesktopSecurityApp.UserInterface.Views
     public partial class UpdateView : UserControl
     {
         private bool capturingKey = false;
+        private string customFolderPath = UserInformationManagement.customFolderPath;
 
         public UpdateView()
         {
@@ -86,7 +88,7 @@ namespace DesktopSecurityApp.UserInterface.Views
             // Update user info in the JSON file
             try
             {
-                UserUpdater.UpdateUserInfoInJsonFile(updatedUserInfo);
+                UserUpdater.UpdateUserInfoInJsonFile(updatedUserInfo, customFolderPath);
             }
             catch (Exception ex)
             {
@@ -101,5 +103,14 @@ namespace DesktopSecurityApp.UserInterface.Views
             saveButton.Visibility = Visibility.Collapsed;
             ReloadUpdateViewAsync();
         }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is UpdateViewModel viewModel)
+            {
+                viewModel.SaveActivationKey(null);
+            }
+        }
+
     }
 }
