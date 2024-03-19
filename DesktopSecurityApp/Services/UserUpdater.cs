@@ -7,11 +7,8 @@ namespace DesktopSecurityApp.Services
 {
     public static class UserUpdater
     {
-        public static void UpdateUserInfoInJsonFile(UpdateUserInfo updatedUserInfo)
+        public static void UpdateUserInfoInJsonFile(UpdateUserInfo updatedUserInfo, string customFolderPath)
         {
-            // Dobivanje putanje do JSON datoteke
-            string executablePath = AppDomain.CurrentDomain.BaseDirectory;
-            string customFolderPath = Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetParent(executablePath).FullName).FullName).FullName).FullName, "Data", "UserData");
             string jsonFilePath = Path.Combine(customFolderPath, "user_data.json");
 
             // Provjera postojanja datoteke
@@ -44,7 +41,8 @@ namespace DesktopSecurityApp.Services
             }
 
             // Ponovno enkriptiranje i spremanje ažuriranih podataka u datoteku
-            JsonEncryptionDecryption.EncryptToJsonFile(userInfo, jsonFilePath);
+            JsonEncryptionDecryption.EncryptToJsonFile(userInfo, "user_data.json", customFolderPath);
         }
+
     }
 }

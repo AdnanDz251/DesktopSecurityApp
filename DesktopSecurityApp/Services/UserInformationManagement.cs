@@ -1,11 +1,7 @@
 ﻿using DesktopSecurityApp.Models;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DesktopSecurityApp.Services
 {
@@ -57,8 +53,9 @@ namespace DesktopSecurityApp.Services
             string jsonFilePath = Path.Combine(customFolderPath, "user_data.json");
 
             // Spremanje korisničkih informacija u JSON datoteku
-            JsonEncryptionDecryption.EncryptToJsonFile(userInfo, jsonFilePath);
+            JsonEncryptionDecryption.EncryptToJsonFile(userInfo, jsonFilePath, customFolderPath);
         }
+
         public static void UpdateUserInfoInJsonFile(UpdateUserInfo updatedUserInfo)
         {
             UserInfo userInfo = GetJSONFile();
@@ -78,7 +75,7 @@ namespace DesktopSecurityApp.Services
             }
 
             // Ponovno enkriptiranje i spremanje ažuriranih podataka u datoteku
-            JsonEncryptionDecryption.EncryptToJsonFile(userInfo, jsonFilePath);
+            JsonEncryptionDecryption.EncryptToJsonFile(userInfo, jsonFilePath, customFolderPath);
         }
     }
 }
