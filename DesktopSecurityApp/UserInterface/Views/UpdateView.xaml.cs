@@ -1,3 +1,4 @@
+
 ﻿using DesktopSecurityApp.Services;
 using System;
 using System.IO;
@@ -101,5 +102,14 @@ namespace DesktopSecurityApp.UserInterface.Views
             saveButton.Visibility = Visibility.Collapsed;
             ReloadUpdateViewAsync();
         }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is UpdateViewModel viewModel)
+            {
+                viewModel.SaveActivationKey(null);
+            }
+        }
+
     }
 }
