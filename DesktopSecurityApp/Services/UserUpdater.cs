@@ -9,7 +9,6 @@ namespace DesktopSecurityApp.Services
     {
         public static void UpdateUserInfoInJsonFile(UpdateUserInfo updatedUserInfo, string customFolderPath)
         {
-            // Formiranje potpune putanje do JSON datoteke
             string jsonFilePath = Path.Combine(customFolderPath, "user_data.json");
 
             // Provjera postojanja datoteke

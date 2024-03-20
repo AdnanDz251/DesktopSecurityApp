@@ -35,6 +35,12 @@ namespace DesktopSecurityApp.Services
         public static OverlayWindow overlayWindow;
 
         private static Key activationKey = (Key)Enum.Parse(typeof(Key), DesktopSecurityApp.Services.UserInformationManagement.GetJSONFile().Key);
+
+        public static void RefreshActivationKey ()
+        {
+            SetActivationKey((Key)Enum.Parse(typeof(Key), DesktopSecurityApp.Services.UserInformationManagement.GetJSONFile().Key));
+        }
+
         public static void RegisterKeyBindings(Window window)
         {
             EventManager.RegisterClassHandler(typeof(Window), Window.KeyDownEvent, new KeyEventHandler(KeyBindHandler));

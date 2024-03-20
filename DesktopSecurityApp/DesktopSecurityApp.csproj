@@ -11,8 +11,6 @@
 
   <ItemGroup>
     <Folder Include="Assets\Images\" />
-    <Folder Include="Data\CameraPhotos\" />
-    <Folder Include="Data\" />
     <Folder Include="Data\UserData\" />
   </ItemGroup>
 

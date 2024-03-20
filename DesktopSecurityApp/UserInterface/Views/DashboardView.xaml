@@ -45,7 +45,7 @@
       <!-- TextBlock for the title -->
       <TextBlock Text="Instructions:"
                  Foreground="White"
-                 FontSize="20"
+FontSize="18"
                  FontWeight="Bold"
                  HorizontalAlignment="Left"
                  Margin="20,0,0,10"/>
@@ -58,8 +58,11 @@
                 Background="#844eff"
                 CornerRadius="20"
                 Margin="20,0,0,0">
-          <TextBlock Text="Placeholder Instruction 1"
+          <TextBlock Text="Go to settings"
                      Foreground="White"
+                      FontSize="18"
+                     Padding="10"
+                     TextWrapping="Wrap"
                      HorizontalAlignment="Center"
                      VerticalAlignment="Center"/>
         </Border>
@@ -68,28 +71,36 @@
                 Height="150"
                 Background="#4e99ff"
                 CornerRadius="20">
-          <TextBlock Text="Placeholder Instruction 2"
+          <TextBlock Text="Adjust the keybind for the overlay"
                      Foreground="White"
+                     FontSize="18"
+                     Padding="10"
                      HorizontalAlignment="Center"
-                     VerticalAlignment="Center"/>
+                     VerticalAlignment="Center" TextWrapping="Wrap"/>
         </Border>
 
         <Border Width="150"
                 Height="150"
                 Background="#4eff91"
                 CornerRadius="20">
-          <TextBlock Text="Placeholder Instruction 3"
-                     Foreground="White"
+          <TextBlock Text="Arm the overlay with your desired key"
+                     Foreground="Black"
                      HorizontalAlignment="Center"
-                     VerticalAlignment="Center"/>
+                     VerticalAlignment="Center"
+                              FontSize="18"
+                     Padding="10"
+                     TextWrapping="Wrap"/>
         </Border>
 
         <Border Width="150"
                 Height="150"
                 Background="#ecff4e"
                 CornerRadius="20">
-          <TextBlock Text="Placeholder Instruction 4"
+          <TextBlock Text="Enjoy the application"
                      Foreground="Black"
+                    FontSize="18"
+                     Padding="10"
+                     TextWrapping="Wrap"
                      HorizontalAlignment="Center"
                      VerticalAlignment="Center"/>
         </Border>
