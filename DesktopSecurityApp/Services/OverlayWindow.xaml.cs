@@ -55,7 +55,7 @@ namespace DesktopSecurityApp.Services
             MessageBox.Show($"Key pressed: {e.Key}");
 
 
-            if (e.Key.ToString() == "S")
+            if (e.Key.ToString() == KeybindHandling.GetActivationKey().ToString())
                 KeybindHandling.CloseOverlayWindow();
             
             // Prevent the key from being forwarded to the system

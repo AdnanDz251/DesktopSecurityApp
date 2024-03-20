@@ -13,6 +13,9 @@
       <RowDefinition Height="Auto"/>
       <RowDefinition Height="Auto"/>
       <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
     </Grid.RowDefinitions>
 
     <!-- First row -->
@@ -70,39 +73,25 @@
       </Button>
 
       <!-- Save Button -->
-      <Button x:Name="saveButton" Content="Save Changes" HorizontalAlignment="Center" VerticalAlignment="Center" Click="saveButton_Click" Margin="20,0,0,0" Visibility="Collapsed" Grid.Column="2">
-        <Button.Style>
-          <Style TargetType="Button">
-            <Setter Property="Background" Value="#f0290f"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="FontFamily" Value="Segoe UI"/>
-            <Setter Property="FontSize" Value="14"/>
-            <Setter Property="Padding" Value="10"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Cursor" Value="Hand"/>
-            <Setter Property="Template">
-              <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                  <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="5" Padding="{TemplateBinding Padding}">
-                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                  </Border>
-                  <ControlTemplate.Triggers>
-                    <Trigger Property="IsMouseOver" Value="True">
-                      <Setter TargetName="border" Property="Background" Value="#e63f28"/>
-                    </Trigger>
-                    <Trigger Property="IsPressed" Value="True">
-                      <Setter TargetName="border" Property="Background" Value="#e63f28"/>
-                    </Trigger>
-                  </ControlTemplate.Triggers>
-                </ControlTemplate>
-              </Setter.Value>
-            </Setter>
-          </Style>
-        </Button.Style>
-      </Button>
+      
     </Grid>
 
+
     <Grid Grid.Row="2">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto"/>
+      </Grid.ColumnDefinitions>
+
+
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+      </Grid.RowDefinitions>
+
+      <!-- Label -->
+      <Label x:Name="currentEmail" Content="Your current email:" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="18" Margin="0,0,0,0" Grid.Column="0" Foreground="White"/>
+    </Grid>
+
+    <Grid Grid.Row="3">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="Auto"/>
       </Grid.ColumnDefinitions>
@@ -117,10 +106,25 @@
       <Label Content="Change your Email:" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="18" Margin="0,0,0,0" Grid.Column="0" Foreground="White"/>
 
       <!-- Button to capture key press -->
-      <TextBox Width="200" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" />
+      <TextBox Margin="5,0,0,0"  Width="200" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" />
     </Grid>
 
-    <Grid Grid.Row="3">
+
+    <Grid Grid.Row="4">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto"/>
+      </Grid.ColumnDefinitions>
+
+
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+      </Grid.RowDefinitions>
+
+      <!-- Label -->
+      <Label x:Name="currentUsername" Content="Your current username:" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="18" Margin="0,20,0,0" Grid.Column="0" Foreground="White"/>
+    </Grid>
+
+    <Grid Grid.Row="5">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="Auto"/>
       </Grid.ColumnDefinitions>
@@ -136,7 +140,47 @@
       <Label Content="Change your username:" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="18" Margin="0,0,0,0" Grid.Column="0" Foreground="White"/>
 
       <!-- Button to capture key press -->
-      <TextBox Width="200" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" />
+      <TextBox Margin="5,0,0,0" Width="200" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" />
+    </Grid>
+    <Grid Grid.Row="6">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto"/>
+      </Grid.ColumnDefinitions>
+
+
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+      </Grid.RowDefinitions>
+    <Button x:Name="saveButton" Content="Save Changes" HorizontalAlignment="Center" VerticalAlignment="Center" Click="saveButton_Click" Margin="0,30,0,0" Padding="60,20,60,20" Grid.Row="0" Grid.Column="0" >
+      <Button.Style>
+        <Style TargetType="Button">
+          <Setter Property="Background" Value="#f0290f"/>
+          <Setter Property="Foreground" Value="White"/>
+          <Setter Property="FontFamily" Value="Segoe UI"/>
+          <Setter Property="FontSize" Value="14"/>
+          <Setter Property="Padding" Value="10"/>
+          <Setter Property="BorderThickness" Value="0"/>
+          <Setter Property="Cursor" Value="Hand"/>
+          <Setter Property="Template">
+            <Setter.Value>
+              <ControlTemplate TargetType="Button">
+                <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="5" Padding="{TemplateBinding Padding}">
+                  <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+                <ControlTemplate.Triggers>
+                  <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="border" Property="Background" Value="#e63f28"/>
+                  </Trigger>
+                  <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="border" Property="Background" Value="#e63f28"/>
+                  </Trigger>
+                </ControlTemplate.Triggers>
+              </ControlTemplate>
+            </Setter.Value>
+          </Setter>
+        </Style>
+      </Button.Style>
+    </Button>
     </Grid>
   </Grid>
 
