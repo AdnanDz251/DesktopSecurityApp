@@ -42,6 +42,9 @@ namespace DesktopSecurityApp.Services
 
             if (e.Key.ToString() == KeybindHandling.GetActivationKey().ToString())
                 KeybindHandling.CloseOverlayWindow();
+            else
+                KeybindHandling.HandleFalseKeyBind(); 
+
 
             // Prevent the key from being forwarded to the system
             e.Handled = true;

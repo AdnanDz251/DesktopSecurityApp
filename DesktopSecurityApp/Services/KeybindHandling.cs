@@ -74,7 +74,7 @@ namespace DesktopSecurityApp.Services
                 CloseOverlayWindow();
             }
         }
-        private static void HandleFalseKeyBind()
+        public static void HandleFalseKeyBind()
         {
             //DotNetEnv.Env.Load();
             string DSA_username = Environment.GetEnvironmentVariable("DSA_USERNAME");

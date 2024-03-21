@@ -15,13 +15,13 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_738207F679CD4DCC8E6F250454DA987E"
+        "MsmKey" = "8:_D3DA5D511F6E4DB78533B7AAB1F1AF3F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_AD343CFF567E42009314512962BD69A5"
+        "MsmKey" = "8:_D9635C545B4C453C93199DCC71B8CC68"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -43,6 +43,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -59,6 +67,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -90,10 +106,10 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AD343CFF567E42009314512962BD69A5"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D3DA5D511F6E4DB78533B7AAB1F1AF3F"
             {
-            "SourcePath" = "8:..\\..\\..\\..\\..\\OneDrive\\Desktop\\Logo.ico"
-            "TargetName" = "8:Logo.ico"
+            "SourcePath" = "8:..\\..\\..\\..\\..\\Downloads\\security_icon_243740.ico"
+            "TargetName" = "8:security_icon_243740.ico"
             "Tag" = "8:"
             "Folder" = "8:_0EBE1CC5C0C94B78B7FCE088EA77BF97"
             "Condition" = "8:"
@@ -287,32 +303,32 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_C72DD54578E441B193A8689B81BF3260"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_6691299D4EA44A4E81B2FDE7A2C60D05"
             {
-            "Name" = "8:DesktopSecurityApp"
+            "Name" = "8:Desktop Security App"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_738207F679CD4DCC8E6F250454DA987E"
-            "Folder" = "8:_27762C3F6BBD45F482DF87DA855112A3"
-            "WorkingFolder" = "8:_0EBE1CC5C0C94B78B7FCE088EA77BF97"
-            "Icon" = "8:_AD343CFF567E42009314512962BD69A5"
-            "Feature" = "8:"
-            }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_E9852C424CC244159286A3056C815F30"
-            {
-            "Name" = "8:DesktopSecurityApp"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_738207F679CD4DCC8E6F250454DA987E"
+            "Target" = "8:_D9635C545B4C453C93199DCC71B8CC68"
             "Folder" = "8:_BC8D1FB21E984E789A1BB2A84B42B213"
             "WorkingFolder" = "8:_0EBE1CC5C0C94B78B7FCE088EA77BF97"
-            "Icon" = "8:_AD343CFF567E42009314512962BD69A5"
+            "Icon" = "8:_D3DA5D511F6E4DB78533B7AAB1F1AF3F"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_E3F52C7D516D47DD8FB35A686CC6C90E"
+            {
+            "Name" = "8:Desktop Security App"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_D9635C545B4C453C93199DCC71B8CC68"
+            "Folder" = "8:_27762C3F6BBD45F482DF87DA855112A3"
+            "WorkingFolder" = "8:_0EBE1CC5C0C94B78B7FCE088EA77BF97"
+            "Icon" = "8:_D3DA5D511F6E4DB78533B7AAB1F1AF3F"
             "Feature" = "8:"
             }
         }
@@ -714,7 +730,7 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_738207F679CD4DCC8E6F250454DA987E"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_D9635C545B4C453C93199DCC71B8CC68"
             {
             "SourcePath" = "8:..\\DesktopSecurityApp\\obj\\Debug\\net8.0-windows\\apphost.exe"
             "TargetName" = "8:"
