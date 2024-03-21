@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using DesktopSecurityApp.Services;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace DesktopSecurityApp.UserInterface.Views
 {
@@ -23,6 +11,15 @@ namespace DesktopSecurityApp.UserInterface.Views
         public DashboardView()
         {
             InitializeComponent();
+            updateUsername();
+        }
+
+        public async void updateUsername()
+        {
+
+            string username = await Task.Run(() => UserInformationManagement.GetJSONFile().Username.ToString());
+            if (usernameText.Text.ToString() == "HI,")
+                usernameText.Text = usernameText.Text + username;
         }
     }
 }

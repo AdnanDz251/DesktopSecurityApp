@@ -1,13 +1,7 @@
 
-﻿using DesktopSecurityApp.Services;
-using System;
-using System.IO;
-using System.Text;
-using System.Windows;
-using System.Windows.Input;
-using System.Windows.Controls;
-using DesktopSecurityApp.Models;
 using DesktopSecurityApp.Services;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace DesktopSecurityApp.UserInterface.Views
 {
@@ -19,21 +13,27 @@ namespace DesktopSecurityApp.UserInterface.Views
         public UpdateView()
         {
             InitializeComponent();
+            FetchJSONUserInfo(true);
             Focusable = true;
             Focus();
             currentKeybind.Content += UserInformationManagement.GetJSONFile().Key;
 
         }
 
-        private async Task ReloadUpdateViewAsync()
+        public async void FetchJSONUserInfo(bool firstTime)
         {
             // Get the key asynchronously
-            string key = await Task.Run(() => UserInformationManagement.GetJSONFile().Key);
-
+            UserInfo JSON_FILE = await Task.Run(() => UserInformationManagement.GetJSONFile());
             // Update the content
-            currentKeybind.Content = currentKeybind.Content.ToString().Substring(0, currentKeybind.Content.ToString().Length - 1) + key;
+            currentKeybind.Content = firstTime ? currentKeybind.Content : currentKeybind.Content.ToString().Substring(0, currentKeybind.Content.ToString().Length - 1) + JSON_FILE.Key;
+            currentUsername.Content = firstTime ? currentUsername.Content + JSON_FILE.Username : "Your current Username: " + JSON_FILE.Username;
+            currentEmail.Content = firstTime ? currentEmail.Content + JSON_FILE.Email : "Your current Email: " + JSON_FILE.Email;
+        }
 
-            // Reinitialize the UpdateView
+        private async Task ReloadUpdateViewAsync()
+        {
+
+            FetchJSONUserInfo(false);
             InitializeComponent();
         }
 
@@ -83,7 +83,16 @@ namespace DesktopSecurityApp.UserInterface.Views
             DesktopSecurityApp.Models.UpdateUserInfo updatedUserInfo = new DesktopSecurityApp.Models.UpdateUserInfo();
 
             // Populate the properties with the new information
-            updatedUserInfo.NewKey = captureButton.Content.ToString(); // Replace "NewKeyHere" with the new key
+
+
+            if (captureButton.Content.ToString() == "Click here to change the keybind" || captureButton.Content.ToString() == "Press a key (Click to Cancel)" || captureButton.Content.ToString() == "Press a key")
+                updatedUserInfo.NewKey = UserInformationManagement.GetJSONFile().Key;
+            else
+                updatedUserInfo.NewKey = captureButton.Content.ToString();
+            updatedUserInfo.NewEmail = newEmailInput.Text.ToString();
+            updatedUserInfo.NewUsername = newUsernameInput.Text.ToString();
+
+            MessageBox.Show(updatedUserInfo.ToString());
 
             // Update user info in the JSON file
             try
@@ -111,6 +120,14 @@ namespace DesktopSecurityApp.UserInterface.Views
             {
                 viewModel.SaveActivationKey(null);
             }
+        }
+        private void NewEmailInput_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            saveButton.Visibility = Visibility.Visible;
+        }
+        private void NewUsernamelInput_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            saveButton.Visibility = Visibility.Visible;
         }
 
     }

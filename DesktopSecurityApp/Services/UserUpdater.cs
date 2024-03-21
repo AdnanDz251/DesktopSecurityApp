@@ -1,7 +1,6 @@
-﻿using System;
-using System.IO;
-using DesktopSecurityApp.Models;
+﻿using DesktopSecurityApp.Models;
 using Newtonsoft.Json;
+using System.IO;
 
 namespace DesktopSecurityApp.Services
 {

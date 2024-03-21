@@ -1,9 +1,4 @@
 ﻿using DesktopSecurityApp.UserInterface.Core;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DesktopSecurityApp.UserInterface.ViewModels
 {
@@ -24,14 +19,14 @@ namespace DesktopSecurityApp.UserInterface.ViewModels
         public object CurrentView
         {
             get { return _currentView; }
-            set 
-            { 
+            set
+            {
                 _currentView = value;
                 OnPropertyChange();
             }
         }
 
-        public MainViewModel() 
+        public MainViewModel()
         {
             DashboardVM = new DashboardViewModel();
             GalleryVM = new GalleryViewModel();
@@ -39,7 +34,7 @@ namespace DesktopSecurityApp.UserInterface.ViewModels
 
             CurrentView = DashboardVM;
 
-            DashboardViewCommand = new RelayCommand(o => 
+            DashboardViewCommand = new RelayCommand(o =>
             {
                 CurrentView = DashboardVM;
             });

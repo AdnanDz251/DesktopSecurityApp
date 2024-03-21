@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Newtonsoft.Json;
 using System.IO;
-using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
-using System.Windows;
-using Newtonsoft.Json;
-using System.Text.Json;
 
 
-namespace DesktopSecurityApp.Services 
-{ 
+namespace DesktopSecurityApp.Services
+{
     public static class JsonEncryptionDecryption
     {
         // Ključ za enkripciju/dekripciju. Preporučuje se korištenje sigurnog i nasumičnog ključa.

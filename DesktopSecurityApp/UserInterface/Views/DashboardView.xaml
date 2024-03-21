@@ -12,7 +12,8 @@
     <!-- First StackPanel for the header -->
     <StackPanel Orientation="Horizontal" Margin="0">
       <Border Width="675" Height="75">
-        <TextBlock Text="HI, USERNAME"
+        <TextBlock x:Name="usernameText"
+            Text="HI,"
                    Foreground="White"
                    FontSize="50"
                    HorizontalAlignment="Center"

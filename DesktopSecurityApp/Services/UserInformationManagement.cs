@@ -1,11 +1,10 @@
 ﻿using DesktopSecurityApp.Models;
 using Newtonsoft.Json;
-using System;
 using System.IO;
 
 namespace DesktopSecurityApp.Services
 {
-   
+
 
     public static class UserInformationManagement
     {
@@ -14,8 +13,8 @@ namespace DesktopSecurityApp.Services
         public static string jsonFilePath = Path.Combine(customFolderPath, "user_data.json");
 
 
-        public static UserInfo GetJSONFile () 
-        {  
+        public static UserInfo GetJSONFile()
+        {
             if (!File.Exists(jsonFilePath))
             {
                 throw new FileNotFoundException("user_data.json file not found.");
@@ -31,7 +30,7 @@ namespace DesktopSecurityApp.Services
             UserInfo userInfo = JsonConvert.DeserializeObject<UserInfo>(decryptedJsonData);
 
             return userInfo;
-        } 
+        }
 
         public static void SaveUserInfoToJsonFile()
         {

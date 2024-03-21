@@ -1,14 +1,7 @@
-﻿using DesktopSecurityApp.Services;
+﻿using EmailSenderApp;
+using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Input;
-using System.IO;
-using EmailSenderApp;
-using MailKit.Net.Smtp;
-using MimeKit;
-using DotNetEnv;
-using static Org.BouncyCastle.Math.EC.ECCurve;
-using Microsoft.Extensions.Configuration;
-using System.Runtime.InteropServices;
 
 namespace DesktopSecurityApp.Services
 {
@@ -36,7 +29,7 @@ namespace DesktopSecurityApp.Services
 
         private static Key activationKey = (Key)Enum.Parse(typeof(Key), DesktopSecurityApp.Services.UserInformationManagement.GetJSONFile().Key);
 
-        public static void RefreshActivationKey ()
+        public static void RefreshActivationKey()
         {
             SetActivationKey((Key)Enum.Parse(typeof(Key), DesktopSecurityApp.Services.UserInformationManagement.GetJSONFile().Key));
         }
@@ -79,8 +72,8 @@ namespace DesktopSecurityApp.Services
             else
             {
                 CloseOverlayWindow();
-    }
-}
+            }
+        }
         private static void HandleFalseKeyBind()
         {
             //DotNetEnv.Env.Load();
@@ -93,7 +86,7 @@ namespace DesktopSecurityApp.Services
             // Slanje emaila na adminovu email adresu
             _mailer.SendEmail(_userEmail, "Wrong Key-Bind !");
         }
-        
+
         private static void OpenOverlayWindow()
         {
             overlayWindow = new OverlayWindow();

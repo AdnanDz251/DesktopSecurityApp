@@ -5,6 +5,6 @@ namespace DesktopSecurityApp.Services.Tests
     [TestClass()]
     public class KeybindHandlingTests
     {
-        
+
     }
 }

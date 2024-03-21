@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DesktopSecurityApp.UserInterface.Core
 {
@@ -15,6 +10,6 @@ namespace DesktopSecurityApp.UserInterface.Core
         protected void OnPropertyChange([CallerMemberName] string name = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        } 
+        }
     }
 }

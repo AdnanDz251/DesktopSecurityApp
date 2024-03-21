@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DesktopSecurityApp.Models
+﻿namespace DesktopSecurityApp.Models
 {
     public class UpdateUserInfo
     {
@@ -12,7 +6,7 @@ namespace DesktopSecurityApp.Models
         public string NewKey { get; set; }
         public string NewEmail { get; set; }
 
-         public override string ToString()
+        public override string ToString()
         {
             return $"New Username: {NewUsername}, New Key: {NewKey}, New Email: {NewEmail}";
         }

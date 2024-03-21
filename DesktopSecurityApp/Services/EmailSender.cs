@@ -1,12 +1,6 @@
-﻿using MailKit.Net.Smtp;
-using MailKit.Security;
+﻿using DesktopSecurityApp.UserInterface.Theme;
+using MailKit.Net.Smtp;
 using MimeKit;
-using System;
-using DotNetEnv;
-using DesktopSecurityApp.UserInterface.Theme;
-using Microsoft.Extensions.Configuration;
-using Syncfusion.Windows.Shared;
-using System.Security.Cryptography;
 
 namespace EmailSenderApp
 {
@@ -24,7 +18,7 @@ namespace EmailSenderApp
             _useSsl = useSsl;
             _username = username;
         }
-        public void SendEmail( string recipientEmail, string subject)
+        public void SendEmail(string recipientEmail, string subject)
         {
             //DotNetEnv.Env.Load();
             string DSA_username = "dsa@skim.ba";   // koristimo u Autenticate !

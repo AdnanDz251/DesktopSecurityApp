@@ -1,13 +1,11 @@
-﻿using System;
+﻿using AForge.Video;
+using AForge.Video.DirectShow;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Security.AccessControl;
 using System.Windows;
-using AForge.Video;
-using AForge.Video.DirectShow;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Forms;
 
 namespace DesktopSecurityApp.Services
 {
@@ -17,17 +15,24 @@ namespace DesktopSecurityApp.Services
 
         public void StartCamera()
         {
-            // Provjerite postoji li bar jedna kamera
-            FilterInfoCollection videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
-
-            if (videoDevices.Count == 0)
+            try
             {
-                MessageBox.Show("No video devices found.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                // Provjerite postoji li bar jedna kamera
+                FilterInfoCollection videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+
+                if (videoDevices.Count == 0)
+                {
+                    MessageBox.Show("No video devices found.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                // Koristite prvu pronađenu kameru
+                videoSource = new VideoCaptureDevice(videoDevices[0].MonikerString);
+                videoSource.NewFrame += VideoSource_NewFrame;
+                videoSource.Start();
             }
-            // Koristite prvu pronađenu kameru
-            videoSource = new VideoCaptureDevice(videoDevices[0].MonikerString);
-            videoSource.NewFrame += VideoSource_NewFrame;
-            videoSource.Start();
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
         }
 
         private void VideoSource_NewFrame(object sender, NewFrameEventArgs eventArgs)

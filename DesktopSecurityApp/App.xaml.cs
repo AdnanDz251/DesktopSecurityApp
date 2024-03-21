@@ -1,14 +1,8 @@
-﻿using System.Configuration;
-using System.Data;
-using System;
-using System.Windows;
-using System.Windows.Input;
-using DesktopSecurityApp.Services;
-using System.Windows.Media;
+﻿using DesktopSecurityApp.Services;
 using EmailSenderApp; // Dodavanje ovog using statement
-using DotNetEnv;
-using System.IO;
 using Microsoft.Extensions.Configuration;
+using System.IO;
+using System.Windows;
 
 //[assembly: ThemeInfo(
 //    ResourceDictionaryLocation.None,
@@ -18,7 +12,7 @@ using Microsoft.Extensions.Configuration;
 namespace DesktopSecurityApp
 {
     public partial class App : Application
-    {                                              
+    {
         private KeybindHandling keyHandler;
         private Mailer mailer; // Dodana varijabla
 

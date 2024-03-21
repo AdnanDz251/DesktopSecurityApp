@@ -1,19 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;                   // Moze samo ovaj da ostane
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.Runtime.InteropServices;
-
-using DesktopSecurityApp.Services;
+﻿using System.Windows;                   // Moze samo ovaj da ostane
 
 namespace DesktopSecurityApp.Services
 {
@@ -38,7 +23,7 @@ namespace DesktopSecurityApp.Services
 
             // Subscribe to the LostFocus event
             this.LostFocus += OverlayWindow_LostFocus;
-            
+
             this.Deactivated += OverlayWindow_Deactivated;
         }
 
@@ -57,7 +42,7 @@ namespace DesktopSecurityApp.Services
 
             if (e.Key.ToString() == KeybindHandling.GetActivationKey().ToString())
                 KeybindHandling.CloseOverlayWindow();
-            
+
             // Prevent the key from being forwarded to the system
             e.Handled = true;
         }
