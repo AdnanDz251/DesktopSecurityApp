@@ -1,4 +1,5 @@
 ﻿using EmailSenderApp;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Input;
@@ -48,15 +49,16 @@ namespace DesktopSecurityApp.Services
         }
         private static void KeyBindHandler(object sender, KeyEventArgs e)
         {
-            if (e.Key == activationKey)
-            {
-                HandleValidKeyBind();
-            }
-            else
-            {
-                HandleFalseKeyBind();
-            }
+                if (e.Key == activationKey)
+                {
+                    HandleValidKeyBind();
+                }
+                else if (overlayWindow != null) // Slusaj sve ostale keybindove samo kad je overlay upalje, tj kad nije null (bilo je samo else, znaci sve je pratilo)
+                {
+                    HandleFalseKeyBind();
+                }
         }
+
         private static void MinimizeAllWindows()
         {
             IntPtr shellWindowHandle = GetShellWindow();
@@ -68,6 +70,7 @@ namespace DesktopSecurityApp.Services
             {
                 MinimizeAllWindows(); // Minimize 
                 OpenOverlayWindow();
+                BlockCtrlAltDelete.StartBlocking(); // Start blocking Ctrl + Alt + Delete 
             }
             else
             {
@@ -76,27 +79,44 @@ namespace DesktopSecurityApp.Services
         }
         public static void HandleFalseKeyBind()
         {
-            //DotNetEnv.Env.Load();
-            string DSA_username = Environment.GetEnvironmentVariable("DSA_USERNAME");
+            try
+            {
+                //DotNetEnv.Env.Load();
+                string DSA_username = Environment.GetEnvironmentVariable("DSA_USERNAME");
 
-            // Pozivamo metodu CaptureAndSave sa prosljeđenom putanjom (LOGIKA ZA KAMERU)
-            CameraHandling cameraHandler = new CameraHandling();
-            cameraHandler.StartCamera();
+                // Pozivamo metodu CaptureAndSave sa prosljeđenom putanjom (LOGIKA ZA KAMERU)
+                CameraHandling cameraHandler = new CameraHandling();
+                cameraHandler.StartCamera();
 
-            // Slanje emaila na adminovu email adresu
-            _mailer.SendEmail(_userEmail, "Wrong Key-Bind !");
+                // Slanje emaila na adminovu email adresu
+                _mailer.SendEmail(_userEmail, "Wrong Key-Bind !");
+
+                Thread.Sleep(1000);
+                cameraHandler.CameraStop();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                throw new Exception(ex.ToString());
+            }
         }
 
         private static void OpenOverlayWindow()
         {
-            overlayWindow = new OverlayWindow();
-            overlayWindow.Show();
+            if (Keyboard.IsKeyDown(Key.L))
+            {
+                // Open the overlay window
+                overlayWindow = new OverlayWindow();
+                overlayWindow.Show();
+
+            }
         }
 
         public static void CloseOverlayWindow()
         {
             overlayWindow.Close();
             overlayWindow = null;
+            BlockCtrlAltDelete.StopBlocking(); // Stop blocking Ctrl + Alt + Delete
         }
     }
 }

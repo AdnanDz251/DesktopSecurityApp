@@ -3,6 +3,7 @@ using EmailSenderApp; // Dodavanje ovog using statement
 using Microsoft.Extensions.Configuration;
 using System.IO;
 using System.Windows;
+using DesktopSecurityApp.UserInterface.Views;
 
 //[assembly: ThemeInfo(
 //    ResourceDictionaryLocation.None,
@@ -28,6 +29,14 @@ namespace DesktopSecurityApp
             // Ovdje možete pozvati metodu za spremanje korisničkih informacija u JSON datoteku
             UserInformationManagement.SaveUserInfoToJsonFile();
 
+            // Pretplata na događaj za ažuriranje keybinda
+            var updateViewModel = new UpdateViewModel();
+            updateViewModel.KeybindUpdated += (sender, args) =>
+            {
+                // Ažuriraj keybind u KeybindHandling klasi
+                KeybindHandling.RefreshActivationKey();
+            };
+
             // Konfiguracija koja uključuje environment varijable
             var config = new ConfigurationBuilder()
                 .AddEnvironmentVariables()
@@ -47,6 +56,16 @@ namespace DesktopSecurityApp
             // Pozovite metodu iz nove klase za registraciju key bindinga
             KeybindHandling.RegisterKeyBindings(MainWindow);
             // Dodajte handler za događaj tastature za key-bind otvaranja overlay-a
+
+            // Pokretanje hooka za globalnu tastaturu
+            GlobalKeyboardHook.Start();
+        }
+        protected override void OnExit(ExitEventArgs e)
+        {
+            base.OnExit(e);
+
+            // Zaustavljanje hooka za globalnu tastaturu
+            GlobalKeyboardHook.Stop();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Windows;                   // Moze samo ovaj da ostane
+﻿using EmailSenderApp;
+using System.Windows;                   // Moze samo ovaj da ostane
 
 namespace DesktopSecurityApp.Services
 {
@@ -7,6 +8,14 @@ namespace DesktopSecurityApp.Services
     /// </summary>
     public partial class OverlayWindow : Window
     {
+        private KeybindHandling keyHandler;
+        static string dsaUsername = Environment.GetEnvironmentVariable("DSA_USERNAME");
+        string dsaPassword = Environment.GetEnvironmentVariable("DSA_PASWORD");
+
+        private Mailer mailer = new Mailer("mail.skim.ba", 465, true, dsaUsername);
+
+        // instanca Mailer-a sa odgovarajućim parametrima
+
         public OverlayWindow()
         {
             InitializeComponent();
@@ -43,7 +52,7 @@ namespace DesktopSecurityApp.Services
             if (e.Key.ToString() == KeybindHandling.GetActivationKey().ToString())
                 KeybindHandling.CloseOverlayWindow();
             else
-                KeybindHandling.HandleFalseKeyBind(); 
+                KeybindHandling.HandleFalseKeyBind();
 
 
             // Prevent the key from being forwarded to the system
@@ -52,7 +61,18 @@ namespace DesktopSecurityApp.Services
 
         private void OverlayWindow_Activated(object sender, EventArgs e)
         {
-            this.Focus();
+            try
+            {
+
+                KeybindHandling.RegisterKeyBindings(this);
+
+                keyHandler = new KeybindHandling(mailer, "ajanovic.m97@gmail.com");
+                this.Focus();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.ToString());
+            }
         }
         private void OverlayWindow_Deactivated(object sender, EventArgs e)
         {

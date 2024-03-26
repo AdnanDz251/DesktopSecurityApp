@@ -4,8 +4,6 @@ using System.IO;
 
 namespace DesktopSecurityApp.Services
 {
-
-
     public static class UserInformationManagement
     {
         public static string executablePath = AppDomain.CurrentDomain.BaseDirectory;

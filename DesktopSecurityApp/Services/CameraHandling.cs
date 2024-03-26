@@ -11,7 +11,24 @@ namespace DesktopSecurityApp.Services
 {
     public class CameraHandling
     {
-        private VideoCaptureDevice videoSource;
+        private VideoCaptureDevice? videoSource;
+
+        public void CameraStop()
+        {
+            try
+            {
+                Debug.WriteLine("Camera stop");
+                videoSource.SignalToStop();
+                videoSource.NewFrame -= new NewFrameEventHandler(VideoSource_NewFrame);
+                videoSource = null;
+                //videoSource.WaitForStop();
+
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+        }
 
         public void StartCamera()
         {
@@ -26,16 +43,21 @@ namespace DesktopSecurityApp.Services
                 }
                 // Koristite prvu pronađenu kameru
                 videoSource = new VideoCaptureDevice(videoDevices[0].MonikerString);
-                videoSource.NewFrame += VideoSource_NewFrame;
+                videoSource.NewFrame += new NewFrameEventHandler(VideoSource_NewFrame);
                 videoSource.Start();
+                //Thread.Sleep(2000);
+                // CameraStop();
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
+                throw new Exception();
             }
         }
 
-        private void VideoSource_NewFrame(object sender, NewFrameEventArgs eventArgs)
+
+
+        private async void VideoSource_NewFrame(object sender, NewFrameEventArgs eventArgs)
         {
             Bitmap bitmap = (Bitmap)eventArgs.Frame.Clone();
             BitmapSource bitmapSource = ConvertBitmapToBitmapSource(bitmap);
@@ -68,8 +90,6 @@ namespace DesktopSecurityApp.Services
             SaveImageToDisk(bitmapSource, outputPath);
 
             // Zaustavite kameru nakon što uhvatite jedan okvir
-            videoSource.SignalToStop();
-            videoSource.WaitForStop();
         }
 
         private void SetFolderSecurity(string folderPath)
@@ -101,7 +121,9 @@ namespace DesktopSecurityApp.Services
             // Zaključajte datoteku
             File.Encrypt(outputPath);
 
+            WindowManager.MinimizeTaskbar();
             MessageBox.Show($"Image saved to {outputPath}");
+            WindowManager.RestoreTaskbar();
         }
 
         public BitmapSource ConvertBitmapToBitmapSource(Bitmap bitmap)

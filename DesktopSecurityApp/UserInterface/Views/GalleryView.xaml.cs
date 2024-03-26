@@ -26,23 +26,21 @@ namespace DesktopSecurityApp.UserInterface.Views
             string outputPath = Path.Combine(absoluteFolderPath);
             string imagesFolderPath = outputPath; // Specify the path to your images folder
 
+            int maxRows = 3; // Maximum number of rows
+            int maxCols = 3; // Maximum number of columns
+            int rowIndex = 0; // Start from the first row
+            int colIndex = 0; // Start from the first column
 
+            // Get the list of image paths and reverse it
+            string[] imagePaths = Directory.GetFiles(imagesFolderPath);
+            Array.Reverse(imagePaths);
 
-            int rowIndex = 1; // Start from the second row
-            int colIndex = 0;
-
-            foreach (string imagePath in Directory.GetFiles(imagesFolderPath))
+            foreach (string imagePath in imagePaths)
             {
-
-                if (rowIndex > 3) break; // Limit the number of images to three rows
-
-                if (colIndex >= 3)
+                if (rowIndex >= maxRows)
                 {
-                    colIndex = 0;
-                    rowIndex++;
+                    break; // If maximum rows reached, exit the loop
                 }
-
-                if (rowIndex > 3) break; // Double check in case the loop exceeds three rows
 
                 // Load the image from file
                 BitmapImage bitmap = new BitmapImage();
@@ -55,8 +53,9 @@ namespace DesktopSecurityApp.UserInterface.Views
                 image.Source = bitmap;
                 image.Stretch = Stretch.Fill;
                 image.Margin = new Thickness(10);
+                image.Cursor = Cursors.Hand;
 
-
+                // Set the event handler for clicking on the image
                 image.MouseLeftButtonDown += (sender, e) =>
                 {
                     try
@@ -71,15 +70,20 @@ namespace DesktopSecurityApp.UserInterface.Views
                     }
                 };
 
-                image.Cursor = Cursors.Hand;
-
-                // Add the image to the corresponding Grid cell
+                // Add the image control to the Grid
+                ImgGrid.Children.Add(image);
                 Grid.SetRow(image, rowIndex);
                 Grid.SetColumn(image, colIndex);
-                ImgGrid.Children.Add(image); // Replace YourGridName with the name of your Grid control in XAML
 
+                // Move to the next column
                 colIndex++;
 
+                // If maximum columns reached, move to the next row
+                if (colIndex >= maxCols)
+                {
+                    colIndex = 0;
+                    rowIndex++;
+                }
             }
         }
     }
