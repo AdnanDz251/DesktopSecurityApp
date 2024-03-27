@@ -29,13 +29,6 @@ namespace DesktopSecurityApp
             // Ovdje možete pozvati metodu za spremanje korisničkih informacija u JSON datoteku
             UserInformationManagement.SaveUserInfoToJsonFile();
 
-            // Pretplata na događaj za ažuriranje keybinda
-            var updateViewModel = new UpdateViewModel();
-            updateViewModel.KeybindUpdated += (sender, args) =>
-            {
-                // Ažuriraj keybind u KeybindHandling klasi
-                KeybindHandling.RefreshActivationKey();
-            };
 
             // Konfiguracija koja uključuje environment varijable
             var config = new ConfigurationBuilder()

@@ -32,14 +32,17 @@ namespace DesktopSecurityApp.Services
 
         public static void SaveUserInfoToJsonFile()
         {
-            // Instanciranje objekta UserInfo s korisničkim informacijama
-            UserInfo userInfo = new UserInfo
+            UserInfo userInfo = GetJSONFile();      //Uzima izmjenjene podatke a u slucaju da nema nista onda uzima defaultne ! 
+            if(userInfo==null)
             {
-                Username = "example_user",
-                Key = "L",
-                Email = "example@example.com"
-            };
-
+                // Instanciranje objekta UserInfo s korisničkim informacijama
+                 userInfo = new UserInfo
+                {
+                     Username = "example_user",
+                     Key = "L",
+                     Email = "example@example.com"
+                 };
+            }
             // Dobijte apsolutnu putanju do direktorija izvršne datoteke aplikacije
             string executablePath = AppDomain.CurrentDomain.BaseDirectory;
 

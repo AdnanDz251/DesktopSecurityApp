@@ -14,7 +14,6 @@ namespace DesktopSecurityApp.UserInterface.Views
         private string _newUsername;
         private string _newKey;
         private string _newEmail;
-        public event EventHandler KeybindUpdated;
 
 
         public string ActivationKey
@@ -48,9 +47,6 @@ namespace DesktopSecurityApp.UserInterface.Views
 
             // Poziv metode za ažuriranje korisničkih podataka
             UpdateUserInfo();
-
-            // Pokreni događaj koji obavještava o ažuriranju keybinda
-            KeybindUpdated?.Invoke(this, EventArgs.Empty);
         }
 
         private void UpdateUserInfo()

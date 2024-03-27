@@ -103,7 +103,7 @@ namespace DesktopSecurityApp.Services
 
         private static void OpenOverlayWindow()
         {
-            if (Keyboard.IsKeyDown(Key.L))
+            if (Keyboard.IsKeyDown(activationKey))
             {
                 // Open the overlay window
                 overlayWindow = new OverlayWindow();
