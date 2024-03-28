@@ -15,7 +15,7 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_3E69002903524ABEA0A8266DDD2AF8A0"
+        "MsmKey" = "8:_1548ECA9760043F58AC1B070FF659F96"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -199,7 +199,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:DesktopSecurityAppSetup"
         "ProductCode" = "8:{692D1380-DF4E-4A7B-B153-FDE68EE74F4F}"
-        "PackageCode" = "8:{E3EF557E-7120-4DBC-82EE-5D308A33D531}"
+        "PackageCode" = "8:{2357A849-BCF5-48FE-B2EB-D193E168B29F}"
         "UpgradeCode" = "8:{570E2053-BFAB-4B69-84DF-2D3783EDE24C}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -319,7 +319,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_92FA8381B28644DB88664E15396F14D6"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_3DEEAC9FC9C24752B72AC5B050B62582"
             {
             "Name" = "8:Desktop Security App"
             "Arguments" = "8:"
@@ -327,13 +327,13 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_3E69002903524ABEA0A8266DDD2AF8A0"
-            "Folder" = "8:_27762C3F6BBD45F482DF87DA855112A3"
+            "Target" = "8:_1548ECA9760043F58AC1B070FF659F96"
+            "Folder" = "8:_BC8D1FB21E984E789A1BB2A84B42B213"
             "WorkingFolder" = "8:_0EBE1CC5C0C94B78B7FCE088EA77BF97"
             "Icon" = "8:_770A863AD954449FA2DC7718C8EBC37B"
             "Feature" = "8:"
             }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_D7FDD69DB81D472A8864E9473C99AD0C"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_A8385C398BA34C6F92749F9659758CFB"
             {
             "Name" = "8:Desktop Security App"
             "Arguments" = "8:"
@@ -341,8 +341,8 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_3E69002903524ABEA0A8266DDD2AF8A0"
-            "Folder" = "8:_BC8D1FB21E984E789A1BB2A84B42B213"
+            "Target" = "8:_1548ECA9760043F58AC1B070FF659F96"
+            "Folder" = "8:_27762C3F6BBD45F482DF87DA855112A3"
             "WorkingFolder" = "8:_0EBE1CC5C0C94B78B7FCE088EA77BF97"
             "Icon" = "8:_770A863AD954449FA2DC7718C8EBC37B"
             "Feature" = "8:"
@@ -746,7 +746,7 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_3E69002903524ABEA0A8266DDD2AF8A0"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_1548ECA9760043F58AC1B070FF659F96"
             {
             "SourcePath" = "8:..\\DesktopSecurityApp\\obj\\Debug\\net8.0-windows\\apphost.exe"
             "TargetName" = "8:"

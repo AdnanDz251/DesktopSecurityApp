@@ -35,9 +35,6 @@ namespace DesktopSecurityApp.UserInterface.Views
             // Get the list of image paths as a list
             List<string> imagePathList = Directory.GetFiles(imagesFolderPath).ToList();
 
-            // Reverse the list
-            imagePathList.Reverse();
-
             // Convert the list back to an array if needed
             string[] imagePaths = imagePathList.ToArray();
 
