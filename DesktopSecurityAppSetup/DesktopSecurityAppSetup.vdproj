@@ -15,6 +15,12 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_3E69002903524ABEA0A8266DDD2AF8A0"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_770A863AD954449FA2DC7718C8EBC37B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -193,7 +199,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:DesktopSecurityAppSetup"
         "ProductCode" = "8:{692D1380-DF4E-4A7B-B153-FDE68EE74F4F}"
-        "PackageCode" = "8:{5C375EC1-797A-4B88-A966-7D4370AD3240}"
+        "PackageCode" = "8:{E3EF557E-7120-4DBC-82EE-5D308A33D531}"
         "UpgradeCode" = "8:{570E2053-BFAB-4B69-84DF-2D3783EDE24C}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -313,6 +319,34 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_92FA8381B28644DB88664E15396F14D6"
+            {
+            "Name" = "8:Desktop Security App"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_3E69002903524ABEA0A8266DDD2AF8A0"
+            "Folder" = "8:_27762C3F6BBD45F482DF87DA855112A3"
+            "WorkingFolder" = "8:_0EBE1CC5C0C94B78B7FCE088EA77BF97"
+            "Icon" = "8:_770A863AD954449FA2DC7718C8EBC37B"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_D7FDD69DB81D472A8864E9473C99AD0C"
+            {
+            "Name" = "8:Desktop Security App"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_3E69002903524ABEA0A8266DDD2AF8A0"
+            "Folder" = "8:_BC8D1FB21E984E789A1BB2A84B42B213"
+            "WorkingFolder" = "8:_0EBE1CC5C0C94B78B7FCE088EA77BF97"
+            "Icon" = "8:_770A863AD954449FA2DC7718C8EBC37B"
+            "Feature" = "8:"
+            }
         }
         "UserInterface"
         {
@@ -712,6 +746,34 @@
         }
         "ProjectOutput"
         {
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_3E69002903524ABEA0A8266DDD2AF8A0"
+            {
+            "SourcePath" = "8:..\\DesktopSecurityApp\\obj\\Debug\\net8.0-windows\\apphost.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_0EBE1CC5C0C94B78B7FCE088EA77BF97"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:PublishItems"
+            "OutputProjectGuid" = "8:{B2130E03-1639-4D94-A624-55940A888369}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
         }
     }
 }

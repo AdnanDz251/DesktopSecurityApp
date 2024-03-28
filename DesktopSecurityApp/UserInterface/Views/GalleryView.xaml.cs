@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Linq;
 using System.Windows.Media.Imaging;
 
 namespace DesktopSecurityApp.UserInterface.Views
@@ -18,7 +19,7 @@ namespace DesktopSecurityApp.UserInterface.Views
             PopulateImages();
         }
 
-        private void PopulateImages()
+        private async void PopulateImages()
         {
             string executablePath = AppDomain.CurrentDomain.BaseDirectory;
             string relativeFolderPath = Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetParent(executablePath).FullName).FullName).FullName).FullName, "Data", "CameraPhotos");
@@ -26,22 +27,25 @@ namespace DesktopSecurityApp.UserInterface.Views
             string outputPath = Path.Combine(absoluteFolderPath);
             string imagesFolderPath = outputPath; // Specify the path to your images folder
 
-            int maxRows = 3; // Maximum number of rows
-            int maxCols = 3; // Maximum number of columns
-            int rowIndex = 0; // Start from the first row
+            int maxRows = 4; // Maximum number of rows
+            int maxCols = 4; // Maximum number of columns
+            int rowIndex = 1; // Start from the first row
             int colIndex = 0; // Start from the first column
 
-            // Get the list of image paths and reverse it
-            string[] imagePaths = Directory.GetFiles(imagesFolderPath);
+            // Get the list of image paths as a list
+            List<string> imagePathList = Directory.GetFiles(imagesFolderPath).ToList();
+
+            // Reverse the list
+            imagePathList.Reverse();
+
+            // Convert the list back to an array if needed
+            string[] imagePaths = imagePathList.ToArray();
+
             Array.Reverse(imagePaths);
+
 
             foreach (string imagePath in imagePaths)
             {
-                if (rowIndex >= maxRows)
-                {
-                    break; // If maximum rows reached, exit the loop
-                }
-
                 // Load the image from file
                 BitmapImage bitmap = new BitmapImage();
                 bitmap.BeginInit();
@@ -84,7 +88,13 @@ namespace DesktopSecurityApp.UserInterface.Views
                     colIndex = 0;
                     rowIndex++;
                 }
+
+                // If maximum rows reached, exit the loop
+                if (rowIndex >= maxRows)
+                {
+                    break;
+                }
             }
         }
+        }
     }
-}
